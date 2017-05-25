@@ -1,0 +1,2095 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bússola</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href=" {% static 'css/freelancer.min.css' %}">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+</head>
+
+<body id="page-top" class="index">
+<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">Bússola</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Categorias</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#">Meu Serviço</a>
+                    </li>
+					 <li class="page-scroll">
+                        <a href="#"><img src="{% static 'img/login.png' %}" class="img-responsive" style="width:20px;height:20px;float:left;margin-right:6px;">{{ request.user }}</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container" id="banner" tabindex="-1">
+	            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-text">
+                        <h1 class="name sombra">Bússola</h1>
+                        <span class="skills sombra">Encontre o que você precisa aqui!</span>
+                    </div>
+				</div>	
+				<div class="row">
+					<div class="col-lg-5" style="margin-top: 20%;">
+						<form>
+						  <input class="form-pesquisa" type="text" name="busca" placeholder="O que precisa?">
+						</form>
+					</div>
+					<div class="col-lg-5" style="margin-top: 20%;">
+						<form>
+						  <input  class="form-pesquisa" type="text" name="busca" placeholder="Onde precisa?">
+						</form>
+					</div>
+					<div class="col-lg-2" style="margin-top: 20%;">
+						<form>
+						  <button class="btn btn-success btn-lg" type="submit">Pesquisar</button>
+						</form>
+					</div>
+					
+				</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CATEGORIAS -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Categorias</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                ALIMENTAÇÃO
+                            </div>
+                        </div>
+                        <img src="img/categoria/alimentacao.jpg" class="img-responsive" alt="Alimantação">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                REFORMAS E REPAROS
+                            </div>
+                        </div>
+                        <img src="img/categoria/reformas_reparos.jpg" class="img-responsive" alt="Reformas e Reparos">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                               ARTE E CULTURA
+                            </div>
+                        </div>
+                        <img src="img/categoria/arte_cultura.jpg" class="img-responsive" alt="Arte e Cultura">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                MODA
+                            </div>
+                        </div>
+                        <img src="img/categoria/moda.jpg" class="img-responsive" alt="Moda">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                SAÚDE
+                            </div>
+                        </div>
+                        <img src="img/categoria/saude.jpg" class="img-responsive" alt="Saúde">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                EDUCAÇÃO
+                            </div>
+                        </div>
+                        <img src="img/categoria/educacao.jpg" class="img-responsive" alt="Educação">
+                    </a>
+                </div>
+				<div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal7" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                ESTÉTICA E BELEZA
+                            </div>
+                        </div>
+                        <img src="img/categoria/estetica_beleza.jpg" class="img-responsive" alt="Estética e Beleza">
+                    </a>
+                </div>
+				<div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal8" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                ADMINISTRATIVO
+                            </div>
+                        </div>
+                        <img src="img/categoria/administracao.jpg" class="img-responsive" alt="Administração">
+                    </a>
+                </div>
+				<div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal9" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                ANIMAIS
+                            </div>
+                        </div>
+                        <img src="img/categoria/animais.jpg" class="img-responsive" alt="Animais">
+                    </a>
+                </div>
+				<div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal10" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                DECORAÇÃO
+                            </div>
+                        </div>
+                        <img src="img/categoria/decoracao.jpg" class="img-responsive" alt="Decoração">
+                    </a>
+                </div>
+				<div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal11" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                HOSPEDAGEM
+                            </div>
+                        </div>
+                        <img src="img/categoria/hospedagem.jpg" class="img-responsive" alt="Hospedagem">
+                    </a>
+                </div>
+				<div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal12" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                INFORMÁTICA
+                            </div>
+                        </div>
+                        <img src="img/categoria/informatica.jpg" class="img-responsive" alt="Informática">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Your Website 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+	<!-- Botão de rolagem para cima (somente visível em tamanhos de tela pequenos e extra-pequenos) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+<!-- SUB-CATEGORIAS -->
+<!-- Alimentação -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl">
+					</div>
+				</div>
+			</div>
+        <section id="portfolio">    
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<h2>Alimentação</h2>
+							<hr class="star-primary">
+							<div class="row">
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												LANCHONETES
+											</div>
+										</div>
+										<img src="img/subCategoria/lanchonetes.jpg" class="img-responsive" alt="Lanchonetes">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												TAPIOCARIA
+											</div>
+										</div>
+										<img src="img/subCategoria/.jpg" class="img-responsive" alt="Tapiocaria">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ARGENTINA
+											</div>
+										</div>
+										<img src="img/subCategoria/.jpg" class="img-responsive" alt="Comida Argentina">
+									</a>
+								</div>
+                            </div>    
+							<div class="row">
+                            	<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ITALIANA
+											</div>
+										</div>
+										<img src="img/subCategoria/.jpg" class="img-responsive" alt="Comida Italiana">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA JAPONESA
+											</div>
+										</div>
+										<img src="img/subCategoria/.jpg" class="img-responsive" alt="Comida Japonesa">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												CONFEITARIA
+											</div>
+										</div>
+										<img src="img/subCategoria/.jpg" class="img-responsive" alt="Confeitaria">
+									</a>
+								</div>
+							</div>    
+                            <div class="row">
+                                <div class="col-sm-4 portfolio-item">
+								    <a href="#" class="portfolio-link" data-toggle="modal">
+									<div class="caption">
+										<div class="caption-content">
+										      SORVETERIAS
+										</div>
+									</div>
+									<img src="img/subCategoria/.jpg" class="img-responsive" alt="Soverterias">
+								    </a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											BARES
+    										</div>
+    									</div>
+    									<img src="img/subCategoria/.jpg" class="img-responsive" alt="Bares">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											PADARIAS
+    										</div>
+    									</div>
+    									<img src="img/subCategoria/.jpg" class="img-responsive" alt="Padaria">
+    								</a>
+    							</div>
+                            </div>    
+                            <div class="row">
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											CAFETERIA
+    										</div>
+    									</div>
+    									<img src="img/subCategoria/.jpg" class="img-responsive" alt="Cafeteria">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA VEGETARIANA
+    										</div>
+    									</div>
+    									<img src="img/subCategoria/.jpg" class="img-responsive" alt="Comida Vegetariana">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											PIZZARIA
+    										</div>
+    									</div>
+    									<img src="img/subCategoria/pizzaria.jpg" class="img-responsive" alt="Pizzaria">
+    								</a>
+    							</div>
+    						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        </section>
+	</div>
+	</div>
+	
+<!-- Reformas e reparos -->
+	<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+        <section id="portfolio">    
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<h2>Reforma e Reparos</h2>
+							<hr class="star-primary">
+							<div class="row">
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												CONSTRUÇÃO
+											</div>
+										</div>
+										<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												PINTURAS
+											</div>
+										</div>
+										<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												ELÉTRICA
+											</div>
+										</div>
+										<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+									</a>
+								</div>
+                            </div>    
+							<div class="row">
+                            	<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												HIDRÁULICA
+											</div>
+										</div>
+										<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												MANUTENÇÃO
+											</div>
+										</div>
+										<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												SERVIÇOS DE ALVENARIA EM GERAL
+											</div>
+										</div>
+										<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+									</a>
+								</div>
+							</div>    
+                            <div class="row">
+                                <div class="col-sm-4 portfolio-item">
+								    <a href="#" class="portfolio-link" data-toggle="modal">
+									<div class="caption">
+										<div class="caption-content">
+										      COLOCAÇÃO DE PISOS E AZULEJOS
+										</div>
+									</div>
+									<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+								    </a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											SERVIÇOS DE EMERGÊNCIA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											ACABAMENTOS
+    										</div>
+    									</div>
+    									<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+    								</a>
+    							</div>
+                            </div>    
+                            <div class="row">
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											TELEFONIA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											REPAROS
+    										</div>
+    									</div>
+    									<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											REFORMAS
+    										</div>
+    									</div>
+    									<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+    								</a>
+    							</div>
+    						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        </section>
+	</div>
+	</div>
+
+<!-- Arte e cultura -->
+	<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl">
+					</div>
+				</div>
+			</div>
+        <section id="portfolio">    
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<h2>Arte e Cultura</h2>
+							<hr class="star-primary">
+							<div class="row">
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												LANCHONETES
+											</div>
+										</div>
+										<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												TAPIOCARIA
+											</div>
+										</div>
+										<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ARGENTINA
+											</div>
+										</div>
+										<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+									</a>
+								</div>
+                            </div>    
+							<div class="row">
+                            	<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ITALIANA
+											</div>
+										</div>
+										<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA JAPONESA
+											</div>
+										</div>
+										<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												CONFEITARIA
+											</div>
+										</div>
+										<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+									</a>
+								</div>
+							</div>    
+                            <div class="row">
+                                <div class="col-sm-4 portfolio-item">
+								    <a href="#" class="portfolio-link" data-toggle="modal">
+									<div class="caption">
+										<div class="caption-content">
+										      SORVETERIAS
+										</div>
+									</div>
+									<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+								    </a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											BARES
+    										</div>
+    									</div>
+    									<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											PADARIAS
+    										</div>
+    									</div>
+    									<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+    								</a>
+    							</div>
+                            </div>    
+                            <div class="row">
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											CYBER CAFÉ
+    										</div>
+    									</div>
+    									<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA VEGETARIANA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA ORGÂNICA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+    								</a>
+    							</div>
+    						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        </section>
+	</div>
+	</div>
+	
+<!-- Moda -->
+	<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl">
+					</div>
+				</div>
+			</div>
+        <section id="portfolio">    
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<h2>Moda</h2>
+							<hr class="star-primary">
+							<div class="row">
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												LANCHONETES
+											</div>
+										</div>
+										<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												TAPIOCARIA
+											</div>
+										</div>
+										<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ARGENTINA
+											</div>
+										</div>
+										<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+									</a>
+								</div>
+                            </div>    
+							<div class="row">
+                            	<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ITALIANA
+											</div>
+										</div>
+										<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA JAPONESA
+											</div>
+										</div>
+										<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												CONFEITARIA
+											</div>
+										</div>
+										<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+									</a>
+								</div>
+							</div>    
+                            <div class="row">
+                                <div class="col-sm-4 portfolio-item">
+								    <a href="#" class="portfolio-link" data-toggle="modal">
+									<div class="caption">
+										<div class="caption-content">
+										      SORVETERIAS
+										</div>
+									</div>
+									<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+								    </a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											BARES
+    										</div>
+    									</div>
+    									<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											PADARIAS
+    										</div>
+    									</div>
+    									<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+    								</a>
+    							</div>
+                            </div>    
+                            <div class="row">
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											CYBER CAFÉ
+    										</div>
+    									</div>
+    									<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA VEGETARIANA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA ORGÂNICA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+    								</a>
+    							</div>
+    						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        </section>
+	</div>
+	</div>
+	
+<!-- Saude -->
+	<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl">
+					</div>
+				</div>
+			</div>
+        <section id="portfolio">    
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<h2>Saúde</h2>
+							<hr class="star-primary">
+							<div class="row">
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												LANCHONETES
+											</div>
+										</div>
+										<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												TAPIOCARIA
+											</div>
+										</div>
+										<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ARGENTINA
+											</div>
+										</div>
+										<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+									</a>
+								</div>
+                            </div>    
+							<div class="row">
+                            	<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ITALIANA
+											</div>
+										</div>
+										<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA JAPONESA
+											</div>
+										</div>
+										<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												CONFEITARIA
+											</div>
+										</div>
+										<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+									</a>
+								</div>
+							</div>    
+                            <div class="row">
+                                <div class="col-sm-4 portfolio-item">
+								    <a href="#" class="portfolio-link" data-toggle="modal">
+									<div class="caption">
+										<div class="caption-content">
+										      SORVETERIAS
+										</div>
+									</div>
+									<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+								    </a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											BARES
+    										</div>
+    									</div>
+    									<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											PADARIAS
+    										</div>
+    									</div>
+    									<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+    								</a>
+    							</div>
+                            </div>    
+                            <div class="row">
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											CYBER CAFÉ
+    										</div>
+    									</div>
+    									<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA VEGETARIANA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA ORGÂNICA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+    								</a>
+    							</div>
+    						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        </section>
+	</div>
+	</div>
+	
+<!-- Educação -->
+	<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl">
+					</div>
+				</div>
+			</div>
+        <section id="portfolio">    
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<h2>Educação</h2>
+							<hr class="star-primary">
+							<div class="row">
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												LANCHONETES
+											</div>
+										</div>
+										<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												TAPIOCARIA
+											</div>
+										</div>
+										<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ARGENTINA
+											</div>
+										</div>
+										<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+									</a>
+								</div>
+                            </div>    
+							<div class="row">
+                            	<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ITALIANA
+											</div>
+										</div>
+										<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA JAPONESA
+											</div>
+										</div>
+										<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												CONFEITARIA
+											</div>
+										</div>
+										<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+									</a>
+								</div>
+							</div>    
+                            <div class="row">
+                                <div class="col-sm-4 portfolio-item">
+								    <a href="#" class="portfolio-link" data-toggle="modal">
+									<div class="caption">
+										<div class="caption-content">
+										      SORVETERIAS
+										</div>
+									</div>
+									<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+								    </a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											BARES
+    										</div>
+    									</div>
+    									<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											PADARIAS
+    										</div>
+    									</div>
+    									<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+    								</a>
+    							</div>
+                            </div>    
+                            <div class="row">
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											CYBER CAFÉ
+    										</div>
+    									</div>
+    									<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA VEGETARIANA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA ORGÂNICA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+    								</a>
+    							</div>
+    						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        </section>
+	</div>
+	</div>
+	
+<!-- Estética e Beleza -->
+	<div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl">
+					</div>
+				</div>
+			</div>
+        <section id="portfolio">    
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<h2>Estética e Beleza</h2>
+							<hr class="star-primary">
+							<div class="row">
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												LANCHONETES
+											</div>
+										</div>
+										<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												TAPIOCARIA
+											</div>
+										</div>
+										<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ARGENTINA
+											</div>
+										</div>
+										<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+									</a>
+								</div>
+                            </div>    
+							<div class="row">
+                            	<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ITALIANA
+											</div>
+										</div>
+										<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA JAPONESA
+											</div>
+										</div>
+										<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												CONFEITARIA
+											</div>
+										</div>
+										<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+									</a>
+								</div>
+							</div>    
+                            <div class="row">
+                                <div class="col-sm-4 portfolio-item">
+								    <a href="#" class="portfolio-link" data-toggle="modal">
+									<div class="caption">
+										<div class="caption-content">
+										      SORVETERIAS
+										</div>
+									</div>
+									<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+								    </a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											BARES
+    										</div>
+    									</div>
+    									<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											PADARIAS
+    										</div>
+    									</div>
+    									<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+    								</a>
+    							</div>
+                            </div>    
+                            <div class="row">
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											CYBER CAFÉ
+    										</div>
+    									</div>
+    									<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA VEGETARIANA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA ORGÂNICA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+    								</a>
+    							</div>
+    						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        </section>
+	</div>
+	</div>
+	
+<!-- Administrativo -->
+	<div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl">
+					</div>
+				</div>
+			</div>
+        <section id="portfolio">    
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<h2>Administrativo</h2>
+							<hr class="star-primary">
+							<div class="row">
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												LANCHONETES
+											</div>
+										</div>
+										<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												TAPIOCARIA
+											</div>
+										</div>
+										<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ARGENTINA
+											</div>
+										</div>
+										<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+									</a>
+								</div>
+                            </div>    
+							<div class="row">
+                            	<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ITALIANA
+											</div>
+										</div>
+										<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA JAPONESA
+											</div>
+										</div>
+										<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												CONFEITARIA
+											</div>
+										</div>
+										<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+									</a>
+								</div>
+							</div>    
+                            <div class="row">
+                                <div class="col-sm-4 portfolio-item">
+								    <a href="#" class="portfolio-link" data-toggle="modal">
+									<div class="caption">
+										<div class="caption-content">
+										      SORVETERIAS
+										</div>
+									</div>
+									<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+								    </a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											BARES
+    										</div>
+    									</div>
+    									<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											PADARIAS
+    										</div>
+    									</div>
+    									<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+    								</a>
+    							</div>
+                            </div>    
+                            <div class="row">
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											CYBER CAFÉ
+    										</div>
+    									</div>
+    									<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA VEGETARIANA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA ORGÂNICA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+    								</a>
+    							</div>
+    						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        </section>
+	</div>
+	</div>
+	
+<!-- Animais -->
+	<div class="portfolio-modal modal fade" id="portfolioModal9" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl">
+					</div>
+				</div>
+			</div>
+        <section id="portfolio">    
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<h2>Animais</h2>
+							<hr class="star-primary">
+							<div class="row">
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												LANCHONETES
+											</div>
+										</div>
+										<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												TAPIOCARIA
+											</div>
+										</div>
+										<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ARGENTINA
+											</div>
+										</div>
+										<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+									</a>
+								</div>
+                            </div>    
+							<div class="row">
+                            	<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ITALIANA
+											</div>
+										</div>
+										<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA JAPONESA
+											</div>
+										</div>
+										<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												CONFEITARIA
+											</div>
+										</div>
+										<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+									</a>
+								</div>
+							</div>    
+                            <div class="row">
+                                <div class="col-sm-4 portfolio-item">
+								    <a href="#" class="portfolio-link" data-toggle="modal">
+									<div class="caption">
+										<div class="caption-content">
+										      SORVETERIAS
+										</div>
+									</div>
+									<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+								    </a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											BARES
+    										</div>
+    									</div>
+    									<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											PADARIAS
+    										</div>
+    									</div>
+    									<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+    								</a>
+    							</div>
+                            </div>    
+                            <div class="row">
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											CYBER CAFÉ
+    										</div>
+    									</div>
+    									<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA VEGETARIANA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA ORGÂNICA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+    								</a>
+    							</div>
+    						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        </section>
+	</div>
+	</div>
+	
+<!-- Decoração -->
+	<div class="portfolio-modal modal fade" id="portfolioModal10" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl">
+					</div>
+				</div>
+			</div>
+        <section id="portfolio">    
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<h2>Decoração</h2>
+							<hr class="star-primary">
+							<div class="row">
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												LANCHONETES
+											</div>
+										</div>
+										<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												TAPIOCARIA
+											</div>
+										</div>
+										<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ARGENTINA
+											</div>
+										</div>
+										<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+									</a>
+								</div>
+                            </div>    
+							<div class="row">
+                            	<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ITALIANA
+											</div>
+										</div>
+										<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA JAPONESA
+											</div>
+										</div>
+										<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												CONFEITARIA
+											</div>
+										</div>
+										<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+									</a>
+								</div>
+							</div>    
+                            <div class="row">
+                                <div class="col-sm-4 portfolio-item">
+								    <a href="#" class="portfolio-link" data-toggle="modal">
+									<div class="caption">
+										<div class="caption-content">
+										      SORVETERIAS
+										</div>
+									</div>
+									<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+								    </a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											BARES
+    										</div>
+    									</div>
+    									<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											PADARIAS
+    										</div>
+    									</div>
+    									<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+    								</a>
+    							</div>
+                            </div>    
+                            <div class="row">
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											CYBER CAFÉ
+    										</div>
+    									</div>
+    									<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA VEGETARIANA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA ORGÂNICA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+    								</a>
+    							</div>
+    						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        </section>
+	</div>
+	</div>
+	
+<!-- Hospedagem -->
+	<div class="portfolio-modal modal fade" id="portfolioModal11" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl">
+					</div>
+				</div>
+			</div>
+        <section id="portfolio">    
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<h2>Hospedagem</h2>
+							<hr class="star-primary">
+							<div class="row">
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												LANCHONETES
+											</div>
+										</div>
+										<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												TAPIOCARIA
+											</div>
+										</div>
+										<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ARGENTINA
+											</div>
+										</div>
+										<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+									</a>
+								</div>
+                            </div>    
+							<div class="row">
+                            	<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ITALIANA
+											</div>
+										</div>
+										<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA JAPONESA
+											</div>
+										</div>
+										<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												CONFEITARIA
+											</div>
+										</div>
+										<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+									</a>
+								</div>
+							</div>    
+                            <div class="row">
+                                <div class="col-sm-4 portfolio-item">
+								    <a href="#" class="portfolio-link" data-toggle="modal">
+									<div class="caption">
+										<div class="caption-content">
+										      SORVETERIAS
+										</div>
+									</div>
+									<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+								    </a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											BARES
+    										</div>
+    									</div>
+    									<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											PADARIAS
+    										</div>
+    									</div>
+    									<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+    								</a>
+    							</div>
+                            </div>    
+                            <div class="row">
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											CYBER CAFÉ
+    										</div>
+    									</div>
+    									<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA VEGETARIANA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA ORGÂNICA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+    								</a>
+    							</div>
+    						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        </section>
+	</div>
+	</div>
+	
+<!-- Informática -->
+	<div class="portfolio-modal modal fade" id="portfolioModal12" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+				<div class="lr">
+					<div class="rl">
+					</div>
+				</div>
+			</div>
+        <section id="portfolio">    
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2">
+						<div class="modal-body">
+							<h2>Informática</h2>
+							<hr class="star-primary">
+							<div class="row">
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												LANCHONETES
+											</div>
+										</div>
+										<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												TAPIOCARIA
+											</div>
+										</div>
+										<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ARGENTINA
+											</div>
+										</div>
+										<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+									</a>
+								</div>
+                            </div>    
+							<div class="row">
+                            	<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA ITALIANA
+											</div>
+										</div>
+										<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												COMIDA JAPONESA
+											</div>
+										</div>
+										<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+									</a>
+								</div>
+								<div class="col-sm-4 portfolio-item">
+									<a href="#" class="portfolio-link" data-toggle="modal">
+										<div class="caption">
+											<div class="caption-content">
+												CONFEITARIA
+											</div>
+										</div>
+										<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+									</a>
+								</div>
+							</div>    
+                            <div class="row">
+                                <div class="col-sm-4 portfolio-item">
+								    <a href="#" class="portfolio-link" data-toggle="modal">
+									<div class="caption">
+										<div class="caption-content">
+										      SORVETERIAS
+										</div>
+									</div>
+									<img src="img/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+								    </a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											BARES
+    										</div>
+    									</div>
+    									<img src="img/portfolio/cake.png" class="img-responsive" alt="Slice of cake">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											PADARIAS
+    										</div>
+    									</div>
+    									<img src="img/portfolio/circus.png" class="img-responsive" alt="Circus tent">
+    								</a>
+    							</div>
+                            </div>    
+                            <div class="row">
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											CYBER CAFÉ
+    										</div>
+    									</div>
+    									<img src="img/portfolio/game.png" class="img-responsive" alt="Game controller">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA VEGETARIANA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/safe.png" class="img-responsive" alt="Safe">
+    								</a>
+    							</div>
+    							<div class="col-sm-4 portfolio-item">
+    								<a href="#" class="portfolio-link" data-toggle="modal">
+    									<div class="caption">
+    										<div class="caption-content">
+    											COMIDA ORGÂNICA
+    										</div>
+    									</div>
+    									<img src="img/portfolio/submarine.png" class="img-responsive" alt="Submarine">
+    								</a>
+    							</div>
+    						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        </section>
+	</div>
+	</div>	
+	
+
+
+     <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+    <script src="{% static 'js/contact_me.js' %}"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'js/freelancer.min.js' %}"></script>
+
+</body>
+
+</html>

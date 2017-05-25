@@ -1,0 +1,28 @@
+{% extends 'login_base.html' %}
+{% block content %}
+
+<form action="{% url 'bussola:login' %"} id="contactForm" method="post">
+    {% csrf_token %}
+    <div class="row control-group">
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+            {{ formLogin.username }}
+            <p class="help-block text-danger"></p>
+        </div>
+    </div>
+    <div class="row control-group">
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+            {{ formLogin.password }}
+            <p class="help-block text-danger"></p>
+        </div>
+        <a style="margin-left: 1.5%;" href="{% url 'bussola:recuperacao_senha' %}">Esqueci minha senha!</a>
+    </div>
+    <br>
+    <div id="success"></div>
+    <div class="row">
+        <div class="form-group col-xs-12">
+            <button type="submit" class="btn btn-success btn-lg">Entrar</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

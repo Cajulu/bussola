@@ -1,0 +1,161 @@
+<script type="text/javascript">
+    function toggle(obj) {
+        var el = document.getElementById(obj);
+        if ( el.style.display != 'none' ) {
+        el.style.display = 'none';
+        }
+        else {
+        el.style.display = '';
+        }
+    }
+</script>
+<script type="text/javascript">
+    function insereTexto(){
+        document.getElementById('divTeste');
+    }
+</script>
+
+
+
+{% extends 'cadastro_servico_base.html' %}
+{% block content %}
+
+
+<form action="{% url 'bussola:cadastro_servico' %}" name="cadastro_servico" id="contactForm" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class= "container-fluid">
+        <div class="row">
+            <div class="col-lg-12 text-center" style="padding-bottom: 5%; padding-top: 5%;">
+                <h2>Cadastre um Serviço</h2>
+                <hr class="star-primary">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <form name="login" id="contactForm" novalidate>
+                    <div class="row control-group" style="padding-bottom: 3%; margin-left: 0.25%;">
+                        {{ form.nome_servico }}
+                        {{ form.nome_servico.errors }}
+                    </div>
+                    <div class="row control-group">
+                        <div class="col-lg-5">
+                            <form method="post" action="#">
+                                <select name="cidades">
+                                    <option>Telefone</option>
+                                    <option>WhattsApp</option>
+                                    <option>Redes Socias</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="col-lg-5" style="margin-left: -25%;">
+                            <form>
+                                <input type="square" placeholder="">
+                            </form>
+                        </div>
+                        <div class="col-lg-2" style="margin-left: -23%;">
+                            <input type='button' onclick='insereTexto()' value='+'/>
+                        </div>
+                    </div>
+                    <div class="row control-group" style="padding-top: 3%;">
+                        <div class="col-lg-4">
+                            <form method="post" action="#" value="Categoria">
+                                <select name="time">
+                                    <option value="bota">Alimentação</option>
+                                    <option value="fla">Reformas e Reparos</option>
+                                    <option value="flu">Arte e Cultura</option>
+                                    <option value="bota">Moda</option>
+                                    <option value="fla">Saúde</option>
+                                    <option value="flu">Educação</option>
+                                    <option value="bota">Estética e Beleza</option>
+                                    <option value="fla">Administrativo</option>
+                                    <option value="flu">Animais</option>
+                                    <option value="bota">Decoração</option>
+                                    <option value="fla">Hospedagem</option>
+                                    <option value="flu">Informática</option>
+                                </select>
+                            </form>
+                            <p class="help-block text-danger"></p>
+                        </div>  
+                        <div class="col-lg-4">
+                            <form method="post" action="#" value="Sub-Categoria">
+                                <select name="time">
+                                    <option value="bota">Lanchonetes</option>
+                                    <option value="fla">Tapiocarias</option>
+                                    <option value="flu">Bares</option>
+                                </select>
+                            </form>
+                            <p class="help-block text-danger"></p>  
+                        </div>
+                        <div class="col-lg-4">
+                            {{ form.outros }}
+                            {{ form.outros.errors }}
+                        </div>
+                    </div>
+                    <div class="row control-group" style="padding-top: 3%; margin-left: 0.25%;">
+                        {{ form.informacoes_adicionais }}
+                        {{ form.informacoes_adicionais.errors }}
+                    </div>
+                    <br>
+                    <div class="row">
+                    <div class="col-lg-6">
+                    <input type="radio" onclick="toggle('maisinfo');"> Cadastrar Estabelecimento 
+                    <div id="maisinfo" style="display:none">
+                        <br>
+                        {{ form.cidade }}
+                        {{ form.cidade.errors }}
+                        <br>
+                        {{ form.bairro }}
+                        {{ form.bairro.errors }}
+                        <br>
+                        {{ form.rua }}
+                        {{ form.rua.errors }}
+                        <br>
+                        {{ form.cep }}
+                        {{ form.cep.errors }}
+                        <br>
+                        {{ form.complemento }}
+                        {{ form.complemento.errors }}
+                       
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <input type="radio" onclick="toggle('maisinformacao');"> Cadastrar Região de Atendimento
+                    <div id="maisinformacao" style="display:none">
+                        <br>
+                        {{ form.descricao }}
+                        {{ form.descricao.errors }}
+                    </div>
+                    </div>
+                    </div>
+                    <div class="row control-group" style="padding-top: 3%; margin-left: 0.25%;">
+                        {{ form.password }}
+                        {{ form.password.errors }}
+                    </div>
+                    <div class="row" style="padding-top: 3%;">
+                        <div class="form-group col-xs-12">
+                            <button type="button">Adicione Imagens</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="success"></div>
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+<script src="{% static 'js/contact_me.js' %}"></script>
+<script src="{% static 'js/freelancer.min.js' %}"></script>
+
+</body>
+
+</html>

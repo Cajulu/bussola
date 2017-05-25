@@ -1,0 +1,42 @@
+{% extends 'cadastro_base.html' %}
+{% block content %}
+
+<a href="{% url 'bussola:logout' %}">Logout</a>
+
+<form action="{% url 'bussola:cadastro' %}" name="cadastro" id="contactForm" method="POST">
+    {% csrf_token %}
+    <div class="row control-group">
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+            {{ formUser.username }}
+            
+            <p class="help-block text-danger"></p>
+        </div>
+    </div>
+    <div class="row control-group">
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+            {{ formUsuario.cpf_cnpj }}
+            
+            <p class="help-block text-danger"></p>
+        </div>
+    </div>
+    <div class="row control-group">
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+            {{ formUser.email }}
+            <p class="help-block text-danger"></p>
+        </div>
+    </div>
+    <div class="row control-group">
+        <div class="form-group col-xs-12 floating-label-form-group controls">
+            {{ formUser.password }}
+            <p class="help-block text-danger"></p>
+        </div>
+    </div>
+    <br>
+    <div id="success"></div>
+    <div class="row">
+        <div class="form-group col-xs-12">
+            <button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

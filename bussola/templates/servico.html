@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bússola</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href=" {% static 'css/freelancer.min.css' %}">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+</head>
+
+<body id="page-top" class="index">
+<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">Bússola</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Galeria de Fotos</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">Avaliações</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Comentários</a>
+                    </li>
+					<li class="page-scroll">
+                        <a href="pagina_usuario.html"><img src="{% static 'img/login.png' %}" class="img-responsive" style="width:20px;height:20px;float:left;margin-right:6px;"> Usuario</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- INFORMAÇÕES PRINCIPAIS -->
+    <div class= "container-fluid">
+        <div class="col-lg-6" style="padding-bottom: 5%; padding-top: 10%;">
+            <div class="col-lg-12 text-center">
+                <h1>Nome</h1>
+            </div>
+            <div>
+                <h4>Endereço</h4>
+                <br>
+                <h4>Contatos</h4>
+                <br>
+                <h4>Avaliação</h4>
+                <br>
+                <p>Sobre o serrviço: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vestibulum nec ex vel semper. Phasellus quis vestibulum lorem. Donec ornare turpis sit amet nulla ultricies hendrerit. Aliquam at ullamcorper elit. Nulla facilisi. Etiam ornare, nibh laoreet feugiat rutrum, mauris nulla volutpat justo, eu lobortis nunc leo vitae leo. Nullam est eros, vehicula et tincidunt ut, suscipit eget nisi.</p>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center" style="padding-bottom: 5%; padding-top: 11%; margin-left: -35%;">
+            <button type="submit" class="btn btn-success btn-lg">Seguir</button>
+        </div>
+    </div>
+
+    <!-- GALERIA -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Galeria de Fotos</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 portfolio-item">
+                    <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Foto1">
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Foto2">
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Foto3">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 portfolio-item">
+                    <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Foto4">
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                        <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Foto5">
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                        <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Foto6">
+                </div>
+            </div>
+            <div class="row">
+				<div class="col-sm-4 portfolio-item">                       
+                        <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Foto7">
+                </div>
+				<div class="col-sm-4 portfolio-item">
+                        <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Foto8">
+                </div>
+				<div class="col-sm-4 portfolio-item">
+                    <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Foto9">
+                </div>
+            </div>
+            <div class="row text-center">
+                <h4>Preço Médio</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLASSIFIQUE -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>AVALIE ESTE SERVIÇO</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+                <div class="estrelas" style="margin-left: 18%;">          
+                  <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
+                  <label for="cm_star-1"><i class="fa"></i></label>
+                  <input type="radio" id="cm_star-1" name="fb" value="1"/>
+                  <label for="cm_star-2"><i class="fa"></i></label>
+                  <input type="radio" id="cm_star-2" name="fb" value="2"/>
+                  <label for="cm_star-3"><i class="fa"></i></label>
+                  <input type="radio" id="cm_star-3" name="fb" value="3"/>
+                  <label for="cm_star-4"><i class="fa"></i></label>
+                  <input type="radio" id="cm_star-4" name="fb" value="4"/>
+                  <label for="cm_star-5"><i class="fa"></i></label>
+                  <input type="radio" id="cm_star-5" name="fb" value="5"/>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label for="message">Comentário</label>
+                                <textarea rows="1" class="form-control" placeholder="Adicione um comentário" id="message" ></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-lg">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Comentários</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <center>Esse serviço não possui nenhum comentário</center>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Your Website 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+    
+    <!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+    <script src="{% static 'js/contact_me.js' %}"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'js/freelancer.min.js' %}"></script>
+
+</body>
+
+</html>

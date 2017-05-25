@@ -1,0 +1,124 @@
+{% extends 'cadastro_servico_base.html' %}
+{% block content %}
+
+<form method="post" id="contactForm" novalidate>
+    {% csrf_token %}
+                    <div class="row control-group" style="padding-bottom: 3%; margin-left: 0.25%;">
+                        <form>
+                            {{ formCadastroServico.nome_servico }}
+                        </form>
+                    </div>
+                    <div class="row control-group">
+                        <div class="col-lg-5">
+                            <form method="post" action="#">
+                                <select name="Tipo de contato">
+                                    <option>Telefone</option>
+                                    <option>WhattsApp</option>
+                                    <option>Redes Socias</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="col-lg-5" style="margin-left: -25%;">
+                            <form>
+                                <input type="text" placeholder="descricao">
+                            </form>
+                        </div>
+                        <div class="col-lg-2" style="margin-left: -23%;">
+                            <input type='button' onclick='insereTexto()' value='+'/>
+                        </div>
+                    </div>
+                    <div class="row control-group" style="padding-top: 3%;">
+                        <div class="col-lg-4">
+                            <form method="post" value="Categoria">
+                                <select name="categoria">
+                                    <option value="alimentacao">Alimentação</option>
+                                    <option value="reformas_reparos">Reformas e Reparos</option>
+                                    <option value="arte_cultura">Arte e Cultura</option>
+                                    <option value="saude">Saúde</option>
+                                    <option value="educacao">Educação</option>
+                                    <option value="moda_estetica_beleza">Moda, Estética e Beleza</option>
+                                    <option value="animais">Animais</option>
+                                    <option value="hospedagem">Hospedagem</option>
+                                    <option value="informatica">Informática</option>
+                                </select>
+                            </form>
+                            <p class="help-block text-danger"></p>
+                        </div>  
+                        <div class="col-lg-4">
+                            
+                            <form method="post" value="Sub-Categoria">
+                                <select name="alimentacao">
+                                    <option value="lanches">Lanches</option>
+                                    <option value="tapioca">Tapioca</option>
+                                </select>
+                                <select name="reformas_reparos">
+                                    <option value="construcao">Construcao</option>
+                                    <option value="pinturas">Pinturas</option>
+                                </select>
+                            </form>
+                            <p class="help-block text-danger"></p>  
+                        </div>
+                    </div>
+                    <div class="row control-group" style="padding-top: 3%; margin-left: 0.25%;">
+                        <form>
+                            {{ formCadastroServico.informacoes_servico }}
+                        </form>
+                    </div>
+                    <br>
+                    <div class="row">
+                    <div class="col-lg-6">
+                    <input type="radio" onclick="toggle('maisinfo');"> Cadastrar Estabelecimento 
+                    <div id="maisinfo" style="display:none">
+                        <br>
+                        <form>
+                            <input type="text" placeholder="Cidade">
+                        </form>
+                        <br>
+                        <form>
+                            <input type="text" placeholder="Bairro">
+                        </form>
+                        <br>
+                        <form>
+                            <input type="text" placeholder="Rua">
+                        </form>
+                        <br>
+                        <form>
+                            <input type="text" placeholder="CEP">
+                        </form>
+                        <br>
+                        <form>
+                            <input type="text" placeholder="Compelmento">
+                        </form>
+                       
+                    </div>
+                    </div>
+                    <div class="col-lg-6">
+                    <input type="radio" onclick="toggle('maisinformacao');"> Cadastrar Região de Atendimento
+                    <div id="maisinformacao" style="display:none">
+                        <br>
+                        <form>
+                            <input type="text" placeholder="Descrição">
+                        </form>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="row control-group" style="padding-top: 3%; margin-left: 0.25%;">
+                        <form>
+                            {{ formCadastroServico.informacoes_preco }}
+                        </form>
+                    </div>
+                    <div class="row" style="padding-top: 3%;">
+                        <div class="form-group col-xs-12">
+                            <button type="button">Adicione Imagens</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="success"></div>
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
+
+{% endblock %}

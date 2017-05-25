@@ -1,0 +1,25 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[user]
+	name = luana
+	email = luanabgn@live.com
+[remote "origin"]
+	url = https://github.com/Cajulu/bussola.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = luana
+	merge = refs/heads/master
+[remote "virtual"]
+	url = https://github.com/Cajulu/bussola.git
+	fetch = +refs/heads/*:refs/remotes/virtual/*
+[remote "cajulu"]
+	url = https://github.com/Cajulu/cajulu.git
+	fetch = +refs/heads/*:refs/remotes/cajulu/*
+[remote "luana"]
+	url = https://github.com/Cajulu/bussola.git
+	fetch = +refs/heads/*:refs/remotes/luana/*
