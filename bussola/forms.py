@@ -48,7 +48,7 @@ class UsuarioLoginForm(forms.ModelForm):
 			'password': forms.PasswordInput(attrs={'class': 'form-control','placeholder':'Senha', 'name':'password', 'id':'password', 'maxlength':255}),
 		}
 
-class CadastroServico(forms.ModelForm):
+class CadastroServicoForm(forms.ModelForm):
 	class Meta:
 		model = Servico
 		fields = ('nome_servico', 'informacoes_servico', 'informacoes_preco')
@@ -79,6 +79,11 @@ class CidadeForm(forms.ModelForm):
 	class Meta:
 		model = Cidade
 		fields = ('descricao',)
+
+		widgets = {
+		'descricao': forms.TextInput(attrs={'placeholder':'Cidade', 'name':'cidade', 'id':'cidade','maxlength':255}),
+		}
+
 
 class ServicoForm(forms.ModelForm):
 
@@ -134,6 +139,14 @@ class EnderecoForm(forms.ModelForm):
 		model = Endereco
 		fields = '__all__'
 
+		widgets = {
+		'bairro': forms.TextInput(attrs={'placeholder':'Bairro', 'name':'bairro', 'id':'bairro','maxlength':255}),
+		'numero': forms.TextInput(attrs={'placeholder':'Número', 'name':'numero', 'id':'numero','maxlength':255}),
+		'rua': forms.TextInput(attrs={'placeholder':'Rua', 'name':'rua', 'id':'rua','maxlength':255}),
+		'complemento': forms.TextInput(attrs={'placeholder':'Complemento', 'name':'complemento', 'id':'complemento','maxlength':255}),
+		}
+
+
 class Avaliacao_estabelecimentoForm(forms.ModelForm):
 
 	class Meta:
@@ -151,6 +164,10 @@ class ImagemForm(forms.ModelForm):
 	class Meta:
 		model = Imagens
 		fields = '__all__'
+
+		widgets = {
+		'descricao_imagem': forms.ImageField(),
+		}
 
 class Fale_conoscoForm(forms.ModelForm):
 

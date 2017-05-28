@@ -21,8 +21,8 @@ class Servico(models.Model):
 	def __str__(self):
 		return self.nome_servico
 
-ALIMENTACAO = (('laches',u'Lanches'),('tapioca',u'Tapioca'))
-REFORMAS_REPAROS = (('construcao',u'Construcao'),('pinturas',u'Pinturas'))
+#ALIMENTACAO = (('laches',u'Lanches'),('tapioca',u'Tapioca'))
+#REFORMAS_REPAROS = (('construcao',u'Construcao'),('pinturas',u'Pinturas'))
 class Sub_categoria(models.Model):
 	descricao = models.CharField(max_length=200)
 	
@@ -61,8 +61,8 @@ class Avaliacao_servico(models.Model):
 
 class Categoria(models.Model):
 	sub_categoria = models.ForeignKey(Sub_categoria)
-	alimentacao = models.CharField(max_length=16, choices=ALIMENTACAO)
-	reformas_reparos = models.CharField(max_length=16, choices=REFORMAS_REPAROS)
+	#alimentacao = models.CharField(max_length=16, choices=ALIMENTACAO)
+	#reformas_reparos = models.CharField(max_length=16, choices=REFORMAS_REPAROS)
 	
 
 	def __str__(self):
@@ -82,11 +82,11 @@ class Usuario(models.Model):
 		return self.user.username
 
 class Endereco (models.Model):
-	complemento = models.CharField(max_length=45)
 	bairro = models.CharField(max_length=45)
 	numero  = models.IntegerField()
 	rua = models.CharField(max_length=45)
-
+	complemento = models.CharField(max_length=45)
+	
 	def __str__(self):
 		return self.bairro
 

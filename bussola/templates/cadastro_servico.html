@@ -1,7 +1,7 @@
 {% extends 'cadastro_servico_base.html' %}
 {% block content %}
 
-<form method="post" id="contactForm" novalidate>
+<form action="{% url 'bussola:cadastro_servico' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
                     <div class="row control-group" style="padding-bottom: 3%; margin-left: 0.25%;">
                         <form>
@@ -67,37 +67,37 @@
                     <br>
                     <div class="row">
                     <div class="col-lg-6">
-                    <input type="radio" onclick="toggle('maisinfo');"> Cadastrar Estabelecimento 
+                    <input type="radio" name="opcao" onclick="toggle('maisinfo');"> Cadastrar Estabelecimento 
                     <div id="maisinfo" style="display:none">
                         <br>
                         <form>
-                            <input type="text" placeholder="Cidade">
+                            {{ formCidade.descricao }}
                         </form>
                         <br>
                         <form>
-                            <input type="text" placeholder="Bairro">
+                            {{ formEndereco.bairro }}
                         </form>
                         <br>
                         <form>
-                            <input type="text" placeholder="Rua">
+                            {{ formEndereco.numero }}
                         </form>
                         <br>
                         <form>
-                            <input type="text" placeholder="CEP">
+                            {{ formEndereco.rua }}
                         </form>
                         <br>
                         <form>
-                            <input type="text" placeholder="Compelmento">
+                            {{ formEndereco.complemento }}
                         </form>
                        
                     </div>
                     </div>
                     <div class="col-lg-6">
-                    <input type="radio" onclick="toggle('maisinformacao');"> Cadastrar Região de Atendimento
+                    <input type="radio" name="opcao" onclick="toggle('maisinformacao');"> Cadastrar Região de Atendimento
                     <div id="maisinformacao" style="display:none">
                         <br>
                         <form>
-                            <input type="text" placeholder="Descrição">
+                            {{ formCidade.descricao }}
                         </form>
                     </div>
                     </div>
@@ -109,7 +109,13 @@
                     </div>
                     <div class="row" style="padding-top: 3%;">
                         <div class="form-group col-xs-12">
-                            <button type="button">Adicione Imagens</button>
+                         
+                         <p style="font-size: 14px">
+                            Adicione uma Imagem:
+                         </p>
+                            
+                            <input id="descricao_imagem" type="file" name="descricao_imagem">
+                            
                         </div>
                     </div>
                     <br>

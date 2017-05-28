@@ -49,21 +49,42 @@ def cadastro(request):
 #terminar de adicionar os atributos e resolver o problema das chamadas ods forms  
 def cadastro_servico(request):
     if request.method == 'POST':
-        formCadastroServico = CadastroServico(request.POST)
-        if formCadastroServico.is_valid():
+        formCadastroServico = CadastroServicoForm(request.POST)
+        formImagem = ImagemForm(request.POST, request.FILES)
+        formCidade = CidadeForm(request.POST)
+        formEndereco = EnderecoForm(request.POST)
+        if formCadastroServico.is_valid() and formImagem.is_valid():
             nome_servico = formCadastroServico.cleaned_data['nome_servico']
             informacoes_servico = formCadastroServico.cleaned_data['infomacoes_servico'] 
-            informacoes_preco = formCadastroServico.cleaned_data['infomacoes_preco'] 
-            outros = formCadastroServico.cleaned_data['outros']
+            informacoes_preco = formCadastroServico.cleaned_data['infomacoes_preco']
+            descricao_imagem = formImagem.cleaned_data['descricao_imagem']
+            descricao = formCidade.cleaned_data['cidade']
+            bairro = formEndereco.cleaned_data['bairro']
+            numero = formEndereco.cleaned_data['numero']
+            rua = formEndereco.cleaned_data['rua']
+            complemento = formEndereco.cleaned_data['complemento']
+            #outros = formCadastroServico.cleaned_data['outros']
 
             servico = Servico.objects.create( nome_servico=nome_servico, infomacoes_servico=infomacoes_servico, infomacoes_preco=informacoes_preco, outros=outros)
             servico.save()
+            
+            imagem = Imagem.objects.create(descricao_imagem=descricao_imagem)
+            imagem.save()
+
+            cidade = Cidade.objects.create(descricao=descricao)
+            cidade.save()
+
+            endereco = Endereco.objects.create(bairro=bairro, numero=numero, rua=rua, complemento=complemento)
+            endereco.save()
+
             return redirect('/meu_servico/')
     else:
-        formCadastroServico = CadastroServico(request.POST)
-    
-    return render(request, 'cadastro_servico.html', {'formCadastroServico':formCadastroServico})
+        formCadastroServico = CadastroServicoForm()
+        formImagem = ImagemForm()
+        formCidade = CidadeForm()
+        formEndereco = EnderecoForm()
 
+    return render(request, 'cadastro_servico.html', {'formCadastroServico':formCadastroServico, 'formImagem':formImagem, 'formCidade':formCidade, 'formEndereco':formEndereco})
 
 def recuperacao_senha(request):
     return render(request, 'recuperacao_senha.html', {})
