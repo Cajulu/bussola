@@ -13,304 +13,187 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Avalia_local',
+            name='Avalia',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
             ],
         ),
         migrations.CreateModel(
-            name='Avaliacao_estabelecimento',
+            name='Avaliacao',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('numero_estrelas_est', models.IntegerField()),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('numeroEstrelas', models.IntegerField()),
             ],
         ),
         migrations.CreateModel(
-            name='Avaliacao_servico',
+            name='Bairro',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('numero_estrelas_ser', models.IntegerField()),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Avaliacao_sobre_ser',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('avaliacao_servico', models.ForeignKey(to='bussola.Avaliacao_servico')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Cadastro_contato',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('bairro', models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
             name='Categoria',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('descricao', models.CharField(max_length=45)),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('categoria', models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
             name='Cidade',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('descricao', models.CharField(max_length=200)),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('cidade', models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
-            name='Cidade_endereco',
+            name='Comenta',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('cidade', models.ForeignKey(to='bussola.Cidade')),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
             ],
         ),
         migrations.CreateModel(
-            name='Comenta_sobre_est',
+            name='Comentario',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Comentario_estabelecimento',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('comenta_est', models.CharField(max_length=200)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Comentario_servico',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('comenta_ser', models.CharField(max_length=200)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Comentario_sobre_ser',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('comentario_servico', models.ForeignKey(to='bussola.Comentario_servico')),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('comentario', models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
             name='Contato',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('descricao', models.CharField(max_length=45)),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('descricaoContato', models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
             name='Endereco',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('complemento', models.CharField(max_length=45)),
-                ('bairro', models.CharField(max_length=45)),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
                 ('numero', models.IntegerField()),
-                ('rua', models.CharField(max_length=45)),
+                ('bairro', models.ForeignKey(verbose_name='Bairro', to='bussola.Bairro', null=True)),
+                ('cidade', models.ForeignKey(verbose_name='Cidade', to='bussola.Cidade', null=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Estabelecimeto',
+            name='FaleConosco',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('nome', models.CharField(max_length=45)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Fale_conosco',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('email', models.EmailField(max_length=254)),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('email', models.CharField(max_length=200)),
                 ('mensagem', models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
-            name='Faz_comentario_est',
+            name='FazComentario',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('comentario_estabelecimento', models.ForeignKey(to='bussola.Comentario_estabelecimento')),
-                ('endereco', models.ForeignKey(to='bussola.Endereco')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Faz_comentario_ser',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('comentario_servico', models.ForeignKey(to='bussola.Comentario_servico')),
-                ('endereco', models.ForeignKey(to='bussola.Endereco')),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('comentario', models.ForeignKey(verbose_name='Comentario', to='bussola.Comentario', null=True)),
             ],
         ),
         migrations.CreateModel(
             name='Imagens',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('descricao_imagem', models.ImageField(upload_to=None)),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('descricaoImagem', models.ImageField(max_length=200, upload_to='')),
             ],
         ),
         migrations.CreateModel(
-            name='Notificacao',
+            name='Realiza',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('descricao', models.CharField(max_length=200)),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('avaliacao', models.ForeignKey(verbose_name='Avaliacao', to='bussola.Avaliacao', null=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Realiza_avaliacao_est',
+            name='Rua',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('avaliacao_estabelecimento', models.ForeignKey(to='bussola.Avaliacao_estabelecimento')),
-                ('endereco', models.ForeignKey(to='bussola.Endereco')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Realiza_avaliacao_ser',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('avaliacao_servico', models.ForeignKey(to='bussola.Avaliacao_servico')),
-                ('endereco', models.ForeignKey(to='bussola.Endereco')),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('rua', models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
             name='Servico',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('nome', models.CharField(max_length=45)),
-                ('informacoes_adicionais', models.CharField(max_length=200)),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('nomeServico', models.CharField(max_length=200)),
+                ('informacoesServico', models.CharField(max_length=200)),
+                ('informacoesPreco', models.CharField(max_length=200)),
+                ('categoria', models.ForeignKey(verbose_name='Categoria', to='bussola.Categoria', null=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Servico_sub_categoria',
+            name='TipoContato',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('servico', models.ForeignKey(to='bussola.Servico')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Sub_categoria',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('descricao', models.CharField(max_length=200)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Tipo_contato',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('tipo', models.CharField(max_length=45)),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('tipo', models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
             name='Usuario',
             fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('cpf_cnpj', models.IntegerField()),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('cpfCnpj', models.IntegerField()),
                 ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL)),
             ],
         ),
-        migrations.CreateModel(
-            name='Usuario_cadastra_ser',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('servico', models.ForeignKey(to='bussola.Servico')),
-                ('usuario', models.ForeignKey(to='bussola.Usuario')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Usuario_cidade',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('cidade', models.ForeignKey(to='bussola.Cidade')),
-                ('endereco', models.ForeignKey(to='bussola.Endereco')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Usuario_cria_notificacao',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('notificacao', models.ForeignKey(to='bussola.Notificacao')),
-                ('usuario', models.ForeignKey(to='bussola.Usuario')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Usuario_le_notificacao',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('notificacao', models.ForeignKey(to='bussola.Notificacao')),
-                ('usuario', models.ForeignKey(to='bussola.Usuario')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Usuario_segue_ser',
-            fields=[
-                ('id', models.AutoField(auto_created=True, serialize=False, verbose_name='ID', primary_key=True)),
-                ('servico', models.ForeignKey(to='bussola.Servico')),
-                ('usuario', models.ForeignKey(to='bussola.Usuario')),
-            ],
+        migrations.AddField(
+            model_name='servico',
+            name='usuario',
+            field=models.ForeignKey(verbose_name='Usuario', to='bussola.Usuario', null=True),
         ),
         migrations.AddField(
-            model_name='servico_sub_categoria',
-            name='sub_categoria',
-            field=models.ForeignKey(to='bussola.Sub_categoria'),
+            model_name='realiza',
+            name='usuario',
+            field=models.ForeignKey(verbose_name='Usuario', to='bussola.Usuario', null=True),
         ),
         migrations.AddField(
             model_name='imagens',
             name='servico',
-            field=models.ForeignKey(to='bussola.Servico'),
+            field=models.ForeignKey(verbose_name='Servico', to='bussola.Servico', null=True),
+        ),
+        migrations.AddField(
+            model_name='fazcomentario',
+            name='usuario',
+            field=models.ForeignKey(verbose_name='Usuario', to='bussola.Usuario', null=True),
+        ),
+        migrations.AddField(
+            model_name='endereco',
+            name='rua',
+            field=models.ForeignKey(verbose_name='Rua', to='bussola.Rua', null=True),
+        ),
+        migrations.AddField(
+            model_name='endereco',
+            name='servico',
+            field=models.ForeignKey(verbose_name='Servico', to='bussola.Servico', null=True),
         ),
         migrations.AddField(
             model_name='contato',
-            name='tipo_contato',
-            field=models.ForeignKey(to='bussola.Tipo_contato'),
-        ),
-        migrations.AddField(
-            model_name='comentario_sobre_ser',
             name='servico',
-            field=models.ForeignKey(to='bussola.Servico'),
+            field=models.ForeignKey(verbose_name='Servico', to='bussola.Servico', null=True),
         ),
         migrations.AddField(
-            model_name='comenta_sobre_est',
-            name='comentario_estabelecimento',
-            field=models.ForeignKey(to='bussola.Comentario_estabelecimento'),
+            model_name='contato',
+            name='tipo',
+            field=models.ForeignKey(verbose_name='TipoContato', to='bussola.TipoContato', null=True),
         ),
         migrations.AddField(
-            model_name='comenta_sobre_est',
-            name='endereco',
-            field=models.ForeignKey(to='bussola.Endereco'),
+            model_name='comenta',
+            name='comentario',
+            field=models.ForeignKey(verbose_name='Comentario', to='bussola.Comentario', null=True),
         ),
         migrations.AddField(
-            model_name='cidade_endereco',
-            name='endereco',
-            field=models.ForeignKey(to='bussola.Endereco'),
-        ),
-        migrations.AddField(
-            model_name='categoria',
-            name='sub_categoria',
-            field=models.ForeignKey(to='bussola.Sub_categoria'),
-        ),
-        migrations.AddField(
-            model_name='cadastro_contato',
-            name='contato',
-            field=models.ForeignKey(to='bussola.Contato'),
-        ),
-        migrations.AddField(
-            model_name='cadastro_contato',
-            name='endereco',
-            field=models.ForeignKey(to='bussola.Endereco'),
-        ),
-        migrations.AddField(
-            model_name='avaliacao_sobre_ser',
+            model_name='comenta',
             name='servico',
-            field=models.ForeignKey(to='bussola.Servico'),
+            field=models.ForeignKey(verbose_name='Servico', to='bussola.Servico', null=True),
         ),
         migrations.AddField(
-            model_name='avalia_local',
-            name='avaliacao_estabelecimento',
-            field=models.ForeignKey(to='bussola.Avaliacao_estabelecimento'),
+            model_name='avalia',
+            name='avaliacao',
+            field=models.ForeignKey(verbose_name='Avaliacao', to='bussola.Avaliacao', null=True),
         ),
         migrations.AddField(
-            model_name='avalia_local',
-            name='endereco',
-            field=models.ForeignKey(to='bussola.Endereco'),
+            model_name='avalia',
+            name='servico',
+            field=models.ForeignKey(verbose_name='Servico', to='bussola.Servico', null=True),
         ),
     ]

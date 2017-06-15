@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {%load staticfiles%}
+{% block content %}
 <html lang="en">
 
 <head>
@@ -11,6 +12,7 @@
     <meta name="author" content="">
 
     <title>Bússola</title>
+    <link rel="shortcut icon" href="{% static 'img/logoBussola.png' %}">
 
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -67,31 +69,33 @@
     <header>
         <div class="container" id="banner" tabindex="-1">
                 <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-text">
-                        <h1 class="name sombra">Bússola</h1>
-                        <span class="skills sombra">Encontre o que você precisa aqui!</span>
+                    <div class="col-lg-12">
+                        <div class="intro-text">
+                            <h1 class="name sombra">Bússola</h1>
+                            <span class="skills sombra">Encontre o que você precisa aqui!</span>
+                        </div>
+                    </div> 
+                <form action="{% url 'bussola:lista_servicos' %}" method="POST">
+                {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-5" style="margin-top: 20%;">
+                            <form>
+                              <input class="form-pesquisa" type="text" name="busca" placeholder="Que serviço precisa?">
+                            </form>
+                        </div>
+                        <div class="col-lg-5" style="margin-top: 20%;">
+                            <form>
+                              <input class="form-pesquisa" type="text" name="busca" placeholder="Em que cidade precisa?">
+                            </form>
+                        </div>
+                        <div class="col-lg-2" style="margin-top: 20%;">
+                            <form>
+                              <button class="btn btn-success btn-lg" type="submit">Pesquisar</button>
+                            </form>
+                        </div>
                     </div>
-                </div>  
-                <div class="row">
-                    <div class="col-lg-5" style="margin-top: 20%;">
-                        <form>
-                          <input class="form-pesquisa" type="text" name="busca" placeholder="O que precisa?">
-                        </form>
-                    </div>
-                    <div class="col-lg-5" style="margin-top: 20%;">
-                        <form>
-                          <input  class="form-pesquisa" type="text" name="busca" placeholder="Onde precisa?">
-                        </form>
-                    </div>
-                    <div class="col-lg-2" style="margin-top: 20%;">
-                        <form>
-                          <button class="btn btn-success btn-lg" type="submit">Pesquisar</button>
-                        </form>
-                    </div>
-                    
+                </form>    
                 </div>
-            </div>
         </div>
     </header>
 
@@ -107,7 +111,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 ALIMENTAÇÃO
@@ -117,7 +121,7 @@
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 REFORMAS E REPAROS
@@ -127,7 +131,7 @@
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                   <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                ARTE E CULTURA
@@ -139,7 +143,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 SAÚDE
@@ -149,7 +153,7 @@
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 EDUCAÇÃO
@@ -159,7 +163,7 @@
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 MODA, ESTÉTICA E BELEZA
@@ -171,7 +175,7 @@
             </div>
             <div class="row"> 
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal7" class="portfolio-link" data-toggle="modal">
+                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 ANIMAIS
@@ -181,7 +185,7 @@
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal8" class="portfolio-link" data-toggle="modal">
+                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 HOSPEDAGEM
@@ -191,7 +195,7 @@
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal9" class="portfolio-link" data-toggle="modal">
+                   <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 INFORMÁTICA
@@ -284,1138 +288,6 @@
         </a>
     </div>
 
-<!-- SUB-CATEGORIAS -->
-<!-- Alimentação -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-        <section id="portfolio">    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Alimentação</h2>
-                            <hr class="star-primary">
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#portfolioModal13" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                LANCHONETES
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/lanchonetes.jpg' %}" class="img-responsive tamnahoImagem" alt="Lanchonetes">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                TAPIOCARIA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/tapiocaria.jpg' %}" class="img-responsive tamnahoImagem" alt="Tapiocaria">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                COMIDA ARGENTINA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/comida_argentina.jpg' %}" class="img-responsive tamnahoImagem" alt="Comida Argentina">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                COMIDA ITALIANA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/comida_italiana.jpg' %}" class="img-responsive tamnahoImagem" alt="Comida Italiana">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                COMIDA JAPONESA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/comida_japonesa.jpg' %}" class="img-responsive tamnahoImagem" alt="Comida Japonesa">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                CONFEITARIA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/confeitaria.jpg' %}" class="img-responsive tamnahoImagem" alt="Confeitaria">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                    <div class="caption">
-                                        <div class="caption-content">
-                                              SORVETERIAS
-                                        </div>
-                                    </div>
-                                    <img src="{% static 'img/subCategoria/sorveteria.jpg' %}" class="img-responsive tamnahoImagem" alt="Soverterias">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                BARES
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/bares.jpg' %}" class="img-responsive tamnahoImagem" alt="Bares">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                PADARIAS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/padaria.jpg' %}" class="img-responsive tamnahoImagem" alt="Padaria">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                CAFETERIA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/cafeteria.jpg' %}" class="img-responsive tamnahoImagem" alt="Cafeteria">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                COMIDA VEGETARIANA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/comida_vegetariana.jpg' %}" class="img-responsive tamnahoImagem" alt="Comida Vegetariana">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                PIZZARIA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/pizzaria.jpg' %}" class="img-responsive tamnahoImagem" alt="Pizzaria">
-                                    </a>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section>
-    </div>
-    </div>
-    
-<!-- Reformas e reparos -->
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-        <section id="portfolio">    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Reforma e Reparos</h2>
-                            <hr class="star-primary">
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                CONSTRUÇÃO
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/construcao.jpg' %}" class="img-responsive tamnahoImagem" alt="Construção">
-                                    </a>   
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                PINTURAS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/pintura.jpg' %}" class="img-responsive tamnahoImagem" alt="Pinturas">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                ELÉTRICA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/eletrica.jpg' %}" class="img-responsive tamnahoImagem" alt="Elétrica">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                HIDRÁULICA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/hidraulica.jpg' %}" class="img-responsive tamnahoImagem" alt="Hidrálica">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                MANUTENÇÃO
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/manutencao.jpg' %}" class="img-responsive tamnahoImagem" alt="Manutenção">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                SERVIÇOS DE ALVENARIA EM GERAL
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/servico_alvenaria.jpg' %}" class="img-responsive tamnahoImagem" alt="Serviços de Alvenaria">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                    <div class="caption">
-                                        <div class="caption-content">
-                                              COLOCAÇÃO DE PISOS E AZULEJOS
-                                        </div>
-                                    </div>
-                                    <img src="{% static 'img/subCategoria/colocacao_pisos.jpg' %}" class="img-responsive tamnahoImagem" alt="Colocação de Pisos">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                SERVIÇOS DE EMERGÊNCIA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/servico_emergencia.jpg' %}" class="img-responsive tamnahoImagem" alt="Serviços e Emergência">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                ACABAMENTOS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/acabamento.jpg' %}" class="img-responsive tamnahoImagem" alt="Acabamentos">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                TELEFONIA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/telefonia.jpg' %}" class="img-responsive tamnahoImagem" alt="Telefonia">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                REPAROS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/reparos.jpg' %}" class="img-responsive tamnahoImagem" alt="Reparos">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                REFORMAS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/reformas.jpg' %}" class="img-responsive tamnahoImagem" alt="Resormas">
-                                    </a>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section>
-    </div>
-    </div>
-
-<!-- Arte e cultura -->
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-        <section id="portfolio">    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Arte e Cultura</h2>
-                            <hr class="star-primary">
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                TEATRO
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/teatro.jpg' %}" class="img-responsive tamnahoImagem" alt="Teatro">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                MUSEU
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/museu.jpg' %}" class="img-responsive tamnahoImagem" alt="Museu">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                BIBLIOTECA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/biblioteca.jpg' %}" class="img-responsive tamnahoImagem" alt="biblioteca">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                ARTESANATO
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/artesanato.jpg' %}" class="img-responsive tamnahoImagem" alt="Artesanato">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                CINEMA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/cinema.jpg' %}" class="img-responsive tamnahoImagem" alt="Cinema">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                SEBOS E LIVRARIA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/sebos_livraria.jpg' %}" class="img-responsive tamnahoImagem" alt="Sebos e Livraria">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                    <div class="caption">
-                                        <div class="caption-content">
-                                              ARTIGOS RELIGIOSOS
-                                        </div>
-                                    </div>
-                                    <img src="{% static 'img/subCategoria/artigos_religiosos.jpg' %}" class="img-responsive tamnahoImagem" alt="Artigos Religiosos">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                GALERIAS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/galerias.jpg' %}" class="img-responsive tamnahoImagem" alt="Galerias">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                CENTRO CULTURAL
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/centro_cultural.jpg' %}" class="img-responsive tamnahoImagem" alt="Centro Cultural">
-                                    </a>
-                                </div>
-                            </div>    
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section>
-    </div>
-    </div>
-    
-<!-- Saude -->
-    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-        <section id="portfolio">    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Saúde</h2>
-                            <hr class="star-primary">
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                FARMACIA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/farmacia.jpg' %}" class="img-responsive tamnahoImagem" alt="Farmacia">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                DENTISTA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/dentista.png' %}" class="img-responsive tamnahoImagem" alt="Dentista">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                OFTAMOLOGISTA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/oftamologista.jpg' %}" class="img-responsive tamnahoImagem" alt="Oftamologista">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                CARDIOLOGISTA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/cardiologista.jpg' %}" class="img-responsive tamnahoImagem" alt="Cardiologista">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                HOSPITAL
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/hospital.jpg' %}" class="img-responsive tamnahoImagem" alt="Hospital">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                NUTRICIONISTA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/nutricionista.jpg' %}" class="img-responsive tamnahoImagem" alt="Nutricionista">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                    <div class="caption">
-                                        <div class="caption-content">
-                                              PEDIATRA
-                                        </div>
-                                    </div>
-                                    <img src="{% static 'img/subCategoria/pediatra.jpg' %}" class="img-responsive tamnahoImagem" alt="Pediatra">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                CLINICO GERAL
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/clinico_geral.jpg' %}" class="img-responsive tamnahoImagem" alt="Clinico Geral">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                OTORRINOLARINGOLOGISTA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/otorrino.jpg' %}" class="img-responsive tamnahoImagem" alt="Otorrinolaringologista">
-                                    </a>
-                                </div>
-                            </div>    
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section>
-    </div>
-    </div>
-    
-<!-- Educação -->
-    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-        <section id="portfolio">    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Educação</h2>
-                            <hr class="star-primary">
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                AULAS PARTICULARES
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/aulas_particulares.png' %}" class="img-responsive tamnahoImagem" alt="Aulas Particulares">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                CANTO
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/canto.jpg' %}" class="img-responsive tamnahoImagem" alt="Canto">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                ARTES MARCIAIS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/artes_marciais.jpg' %}" class="img-responsive tamnahoImagem" alt="Artes Marciais">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                AULA INSTRUMENTAL
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/instrumental.jpg' %}" class="img-responsive tamnahoImagem" alt="Aula Instrumental">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                ENSINO PROFICIONALIZANTE   
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/ensino_profissionalizante.jpg' %}" class="img-responsive tamnahoImagem" alt="Canto">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                ESCOLAS TÉCNICAS   
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/ensino_tecnico.jpg' %}" class="img-responsive tamnahoImagem" alt="Escolas Tecnicas">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                    <div class="caption">
-                                        <div class="caption-content">
-                                             ENSINO FUNDAMENTAL 
-                                        </div>
-                                    </div>
-                                    <img src="{% static 'img/subCategoria/ensino_fundamental.jpg' %}" class="img-responsive tamnahoImagem" alt="Ensino Fundamental">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                ENSINO MÉDIO
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/ensino_medio.png' %}" class="img-responsive tamnahoImagem" alt="Ensino Médio">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                FACULDADE E UNIVERSIDADE
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/faculdade.jpg' %}" class="img-responsive tamnahoImagem" alt="Faculdade e Universidade">
-                                    </a>
-                                </div>
-                            </div>    
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section>
-    </div>
-    </div>
-    
-<!-- Moda, Estética e Beleza -->
-    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-        <section id="portfolio">    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Moda, Estética e Beleza</h2>
-                            <hr class="star-primary">
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                STUDIO DE BELEZA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/studio_beleza.jpg' %}" class="img-responsive tamnahoImagem" alt="Studio de Beleza">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                MAQUIADOR(A)
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/maquiador.jpg' %}" class="img-responsive tamnahoImagem" alt="Maquiador(a)">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                MANICURE
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/manicure.jpg' %}" class="img-responsive tamnahoImagem" alt="Manicure">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                ACADEMIA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/academia.jpg' %}" class="img-responsive tamnahoImagem" alt="Academia">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                SPA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/spa.jpg' %}" class="img-responsive tamnahoImagem" alt="Spa">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                RELOJOARIA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/relogios.jpg' %}" class="img-responsive tamnahoImagem" alt="Rejoaleria">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                    <div class="caption">
-                                        <div class="caption-content">
-                                              BAZARES
-                                        </div>
-                                    </div>
-                                    <img src="{% static 'img/subCategoria/bazar.jpg' %}" class="img-responsive tamnahoImagem" alt="Bazares">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                ÓTICAS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/oticas.jpg' %}" class="img-responsive tamnahoImagem" alt="Ótica">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                COSMÉTICO
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/cosmeticos.jpg' %}" class="img-responsive tamnahoImagem" alt="Cosmetico">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                VESTUÁRIOS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/vestuario.jpg' %}" class="img-responsive tamnahoImagem" alt="Vestuarios">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                JÓIAS E BIJUTERIAS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/joias_bijus.jpg' %}" class="img-responsive tamnahoImagem" alt="Jóias e Bijuterias">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                SAPATARIA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/sapataria.jpg' %}" class="img-responsive tamnahoImagem" alt="Sapataria">
-                                    </a>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section>
-    </div>
-    </div>
-    
-<!-- Animais -->
-    <div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-        <section id="portfolio">    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Animais</h2>
-                            <hr class="star-primary">
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                CASA DE RAÇÃO
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/racao.jpg' %}" class="img-responsive tamnahoImagem" alt="Casa de ração">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                VETERINÁRIO(A)
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/veterinario.jpg' %}" class="img-responsive tamnahoImagem" alt="Veterinário">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                PETSHOP
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/pet_shop.jpg' %}" class="img-responsive tamnahoImagem" alt="Pet Shop">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                CANIS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/canil.jpg' %}" class="img-responsive tamnahoImagem" alt="Canto">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                CRIAÇÃO E VENDA DE ANIMAIS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/animais.jpg' %}" class="img-responsive tamnahoImagem" alt="Safe">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                HOTEL DE ANIMAIS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/hotel_cachorro.jpg' %}" class="img-responsive tamnahoImagem" alt="Submarine">
-                                </div>
-                            </div>    
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section>
-    </div>
-    </div>
-    
-<!-- Hospedagem -->
-    <div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-        <section id="portfolio">    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Hospedagem</h2>
-                            <hr class="star-primary">
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                HOTEL
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/hotel.jpg' %}" class="img-responsive tamnahoImagem" alt="hotel">                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                CHÁCARA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/chacara.jpg' %}" class="img-responsive tamnahoImagem" alt="Chacara">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                CASA DE PRAIA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/casa_praia.jpg' %}" class="img-responsive tamnahoImagem" alt="Casa de Praia">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                POUSADA
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/pousada.jpg' %}" class="img-responsive tamnahoImagem" alt="Pousada">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                HOSTEL
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/hostel.jpg' %}" class="img-responsive tamnahoImagem" alt="Hostel">                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                               AGENCIA DE TURISMO
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/agencia_turismo.jpg' %}" class="img-responsive tamnahoImagem" alt="Agencia de Turismo"> 
-                                        </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                    <div class="caption">
-                                        <div class="caption-content">
-                                              República Universitária
-                                        </div>
-                                    </div>
-                                    <img src="{% static 'img/subCategoria/republica.jpg' %}" class="img-responsive tamnahoImagem" alt="Pensão">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                APART-HOTEL
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/apart_hotel.jpg' %}" class="img-responsive tamnahoImagem" alt="Apart-Hotel">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                RESORT
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/resort.jpg' %}" class="img-responsive tamnahoImagem" alt="Resort">
-                                    </a>
-                                </div>
-                            </div>  
-                        </div>      
-                </div>
-            </div>
-        </div>
-        </section>
-    </div>
-    </div>
-    
-<!-- Informática -->
-    <div class="portfolio-modal modal fade" id="portfolioModal9" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-        <section id="portfolio">    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Informática</h2>
-                            <hr class="star-primary">
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                LOJAS ESPECIALIZADAS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/hotel.jpg' %}" class="img-responsive tamnahoImagem" alt="Lojas Especializadas">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                DESENVOLVIMENTO DE SOFTWARE
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/desenvolvimento_software.jpg' %}" class="img-responsive tamnahoImagem" alt="Desenvolvimento de Software">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                PROCESSAMENTO DE DADOS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/processamento.jpg' %}" class="img-responsive tamnahoImagem" alt="Processamento de Dados">
-                                    </a>
-                                </div>
-                            </div>    
-                            <div class="row">
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                COMPUTAÇÃO E ARTES GRÁFICAS
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/arte_grafica.jpg' %}" class="img-responsive tamnahoImagem" alt="Computação e Artes Gráficas">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                SERVIÇOS DE INTERNET
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/servicos_internet.jpg' %}" class="img-responsive tamnahoImagem" alt="Serviços de Internet">
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 portfolio-item">
-                                    <a href="#" class="portfolio-link" data-toggle="modal">
-                                        <div class="caption">
-                                            <div class="caption-content">
-                                                LAN HOSE
-                                            </div>
-                                        </div>
-                                        <img src="{% static 'img/subCategoria/lan_house.jpg' %}" class="img-responsive tamnahoImagem" alt="Lan_House">
-                                    </a>
-                                </div>
-                            </div>  
-                    </div>
-                </div>
-            </div>
-        </div>
-        </section>
-    </div>
-    </div>  
-    
-    <div class="portfolio-modal modal fade" id="portfolioModal13" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-        <section id="portfolio">    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Lanchonetes</h2>
-                            <hr class="star-primary">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-     </div>                       
-
 
     <!-- jQuery -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
@@ -1433,7 +305,7 @@
     <!-- Theme JavaScript -->
     <script src="{% static 'js/freelancer.min.js' %}"></script>
 
-
+{% endblock %}
 </body>
 
 </html>

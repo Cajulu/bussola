@@ -11,6 +11,7 @@
     <meta name="author" content="">
 
     <title>Bússola</title>
+    <link rel="shortcut icon" href="{% static 'img/logoBussola.png' %}">
 
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -27,7 +28,7 @@
 <body id="page-top" class="index">
 <div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
 
-    <!-- Navigation -->
+    <!-- Navigation logado ou não-->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -35,7 +36,15 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Bússola</a>
+                {% if user.is_authenticated %}
+                    <li class="page-scroll">
+                        <a class="navbar-brand" href="{% url 'bussola:pagina_usuario' %}">Bússola</a>
+                    </li>
+                {% else %}
+                    <li class="page-scroll">
+                        <a class="navbar-brand" href="{% url 'bussola:index' %}">Bússola</a>
+                    </li>
+                {% endif %}
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,7 +53,7 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li class="page-scroll">
+                    <!---<li class="page-scroll">
                         <a href="#portfolio">Galeria de Fotos</a>
                     </li>
                     <li class="page-scroll">
@@ -52,40 +61,43 @@
                     </li>
                     <li class="page-scroll">
                         <a href="#contact">Comentários</a>
-                    </li>
-					<li class="page-scroll">
-                        <a href="pagina_usuario.html"><img src="{% static 'img/login.png' %}" class="img-responsive" style="width:20px;height:20px;float:left;margin-right:6px;"> Usuario</a>
-                    </li>
+                    </li>-->
+                    {% if user.is_authenticated %}
+    					<li class="page-scroll">
+                            <a href="#"><img src="{% static 'img/login.png' %}" class="img-responsive" style="width:20px;height:20px;float:left;margin-right:6px;">{{ request.user }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-scroll">
+                            <a href="{% url 'bussola:login' %}"><img src="{% static 'img/login.png' %}" class="img-responsive" style="width:20px;height:20px;float:left;margin-right:6px;">Login</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
-
+    {% for servicos in servico %}
     <!-- INFORMAÇÕES PRINCIPAIS -->
     <div class= "container-fluid">
         <div class="col-lg-6" style="padding-bottom: 5%; padding-top: 10%;">
             <div class="col-lg-12 text-center">
-                <h1>Nome</h1>
+                <h1>{{servicos.nomeServico}}</h1>
             </div>
             <div>
                 <h4>Endereço</h4>
                 <br>
                 <h4>Contatos</h4>
                 <br>
-                <h4>Avaliação</h4>
-                <br>
-                <p>Sobre o serrviço: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vestibulum nec ex vel semper. Phasellus quis vestibulum lorem. Donec ornare turpis sit amet nulla ultricies hendrerit. Aliquam at ullamcorper elit. Nulla facilisi. Etiam ornare, nibh laoreet feugiat rutrum, mauris nulla volutpat justo, eu lobortis nunc leo vitae leo. Nullam est eros, vehicula et tincidunt ut, suscipit eget nisi.</p>
+                <p>{{servicos.informacoesServico}}</p>
             </div>
         </div>
-        <div class="col-lg-6 text-center" style="padding-bottom: 5%; padding-top: 11%; margin-left: -35%;">
-            <button type="submit" class="btn btn-success btn-lg">Seguir</button>
-        </div>
     </div>
-
+    <div class="row text-center">
+        <h4>{{servicos.informacoesPreco}}</h4>
+    </div>
     <!-- GALERIA -->
-    <section id="portfolio">
+    <!--<section id="portfolio">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -126,14 +138,12 @@
                     <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Foto9">
                 </div>
             </div>
-            <div class="row text-center">
-                <h4>Preço Médio</h4>
-            </div>
         </div>
-    </section>
+    </section>-->
 
+    {% endfor %}
     <!-- CLASSIFIQUE -->
-    <section id="about">
+    <!--<section id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -197,7 +207,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <!-- RODAPÉ -->
     <footer class="text-center">

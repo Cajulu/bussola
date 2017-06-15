@@ -1,24 +1,26 @@
-# -*- codinng: utf-8 -*- 
+# -*- codinng: utf-8 -*-  
 from django.forms import ModelForm
 from django import forms
 from .models import *
 from django.contrib.auth.models import User
-
-
+ 
+  
 #Neste documento são feitos os forms que serão chamados pelos htmls
 
+#certo
 class UsuarioCadastroForm(forms.ModelForm):
 	class Meta:
 		model = Usuario
-		fields = ('cpf_cnpj',)		
+		fields = ('cpfCnpj',)		
 		widgets = {
-			'cpf_cnpj': forms.TextInput(attrs={'class': 'form-control','placeholder':'CPF ou CNPJ', 'name':'cpf_cnpj', 'id':'cpj_cnpj', 'maxlength':255}),
+			'cpfCnpj': forms.TextInput(attrs={'class': 'form-control','placeholder':'CPF ou CNPJ', 'name':'cpfCnpj', 'id':'cpfCnpj', 'maxlength':255}),
 		}
 
 
-
+#certo
 class UserCadastroForm(forms.ModelForm):
 	class Meta:
+		
 		model = User
 		fields = ('email', 'password', 'username',)
 		
@@ -38,7 +40,7 @@ class UserCadastroForm(forms.ModelForm):
 			user.save()
 
 		return user
-
+#certo
 class UsuarioLoginForm(forms.ModelForm):
 	class Meta:
 		model = User
@@ -48,129 +50,100 @@ class UsuarioLoginForm(forms.ModelForm):
 			'password': forms.PasswordInput(attrs={'class': 'form-control','placeholder':'Senha', 'name':'password', 'id':'password', 'maxlength':255}),
 		}
 
+#certo
 class CadastroServicoForm(forms.ModelForm):
 	class Meta:
 		model = Servico
-		fields = ('nome_servico', 'informacoes_servico', 'informacoes_preco')
+		fields = ['nomeServico', 'informacoesServico', 'informacoesPreco','categoria']
 
 		widgets = {
-			'nome_servico': forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Nome do serviço', 'name':'nome_servico', 'id':'nome_servico','maxlength':255}),
-			'informacoes_servico': forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Informações do Serviço', 'name':'informacoes_servico', 'id':'informacoes_servico','maxlength':255}),
-			'informacoes_preco': forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Informações de Preço', 'name':'informacoes_preco', 'id':'informacoes_preco','maxlength':255}),
+			'nomeServico': forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Nome do serviço', 'name':'nomeServico', 'id':'nomeServico','maxlength':255}),
+			'informacoesServico': forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Informações do Serviço', 'name':'informacoesServico', 'id':'informacoesServico','maxlength':255}),
+			'informacoesPreco': forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Informações de Preço', 'name':'informacoesPreco', 'id':'informacoesPreco','maxlength':255}),
+			'categoria': forms.Select(attrs={'id':'id-categoria','class':'selectField'})
 		}
 
 	def saveServico(self, commit=True):
-		servico = super(CadastroServico, self).save(commit=False)
+		servico = super(CadastroServicoForm, self).save(commit=False)
 		servico.set_password()
 		if commit:
 			servico.save()
 
 		return servico
-
-
-class NotificacaoForm(forms.ModelForm):
-
-	class Meta:
-		model = Notificacao
-		fields = ('descricao',)
-
-class CidadeForm(forms.ModelForm):
-
-	class Meta:
-		model = Cidade
-		fields = ('descricao',)
-
-		widgets = {
-		'descricao': forms.TextInput(attrs={'placeholder':'Cidade', 'name':'cidade', 'id':'cidade','maxlength':255}),
-		}
-
-
-class ServicoForm(forms.ModelForm):
-
-	class Meta:
-		model = Servico
-		fields = '__all__'
-
-class Sub_categoriaForm(forms.ModelForm):
-
-	class Meta:
-		model = Sub_categoria
-		fields = ('descricao',)
-
-class Comentario_servicoForm(forms.ModelForm):
-
-	class Meta:
-		model = Comentario_servico
-		fields = '__all__'
-
-class Tipo_contatoForm(forms.ModelForm):
-
-	class Meta:
-		model = Tipo_contato
-		fields = ('tipo',)
-
-class ContatoForm(forms.ModelForm):
-
-	class Meta:
-		model = Contato
-		fields = '__all__'
-
-class Avaliacao_servicoForm(forms.ModelForm):
-
-	class Meta:
-		model = Avaliacao_servico
-		fields = ('numero_estrelas_ser',)
-
+#certo
 class CategoriaForm(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        fields = ['categoria']
 
-	class Meta:
-		model = Categoria
-		fields = '__all__'
+#certo
+class ContatoForm(forms.ModelForm):
+    class Meta:
+        model = Contato
+        fields = ['tipo', 'descricaoContato']
+        widgets = {
+            'tipo': forms.Select(attrs={'id':'id-tipoContato','class':' selectField'}),
+            'descricaoContato': forms.TextInput(attrs={'placeholder':'Descrição', 'name':'descricaoContato', 'id':'descricaoContato','maxlength':255}),
+            }
 
-class EstabelecimetoForm(forms.ModelForm):
+class TipoContatoForm(forms.ModelForm):
+    class Meta:
+        model = TipoContato
+        fields = ['tipo']
 
-	class Meta:
-		model = Estabelecimeto
-		fields = ('nome',)
-
+#certo
 class EnderecoForm(forms.ModelForm):
-
 	class Meta:
 		model = Endereco
-		fields = '__all__'
+		fields = ['cidade', 'numero']
+
+		widgets = {
+		'cidade': forms.Select(attrs={'id':'id-cidade','class':' selectField'}),
+		'numero': forms.TextInput(attrs={'placeholder':'Número', 'name':'numero', 'id':'numero'}),
+		
+		}
+
+#certo
+class CidadeForm(forms.ModelForm):
+	class Meta:
+		model = Cidade
+		fields = ['cidade']
+
+class RuaForm(forms.ModelForm):
+	class Meta:
+		model = Rua
+		fields = ['rua']
+
+		widgets = {
+		'rua': forms.TextInput(attrs={'placeholder':'Rua', 'name':'rua', 'id':'rua','maxlength':255}),
+		}
+
+class BairroForm(forms.ModelForm):
+	class Meta:
+		model = Bairro
+		fields = ['bairro']
 
 		widgets = {
 		'bairro': forms.TextInput(attrs={'placeholder':'Bairro', 'name':'bairro', 'id':'bairro','maxlength':255}),
-		'numero': forms.TextInput(attrs={'placeholder':'Número', 'name':'numero', 'id':'numero','maxlength':255}),
-		'rua': forms.TextInput(attrs={'placeholder':'Rua', 'name':'rua', 'id':'rua','maxlength':255}),
-		'complemento': forms.TextInput(attrs={'placeholder':'Complemento', 'name':'complemento', 'id':'complemento','maxlength':255}),
 		}
-
-
-class Avaliacao_estabelecimentoForm(forms.ModelForm):
-
-	class Meta:
-		model = Avaliacao_estabelecimento
-		fields = ('numero_estrelas_est',)
-
-class Comentario_estabelecimentoForm(forms.ModelForm):
-
-	class Meta:
-		model = Comentario_estabelecimento
-		fields = ('comenta_est',)
 
 class ImagemForm(forms.ModelForm):
 
 	class Meta:
 		model = Imagens
-		fields = '__all__'
+		fields = ['descricaoImagem']
 
-		widgets = {
-		'descricao_imagem': forms.ImageField(),
-		}
-
-class Fale_conoscoForm(forms.ModelForm):
+#AINDA NAO UTILIZADOS
+class FaleConoscoForm(forms.ModelForm):
 
 	class Meta:
-		model = Fale_conosco
+		model = FaleConosco
 		fields = '__all__'
+
+class ComentarioServicoForm(forms.ModelForm):
+
+	class Meta:
+		model = Comentario
+		fields = '__all__'
+#END
+

@@ -4,118 +4,78 @@
 <form action="{% url 'bussola:cadastro_servico' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
                     <div class="row control-group" style="padding-bottom: 3%; margin-left: 0.25%;">
-                        <form>
-                            {{ formCadastroServico.nome_servico }}
-                        </form>
+                       
+                            {{ formCadastroServico.nomeServico }}
+                            {{ formCadastroServico.nomeServico.errors }}
+                        
                     </div>
                     <div class="row control-group">
-                        <div class="col-lg-5">
-                            <form method="post" action="#">
-                                <select name="Tipo de contato">
-                                    <option>Telefone</option>
-                                    <option>WhattsApp</option>
-                                    <option>Redes Socias</option>
-                                </select>
-                            </form>
-                        </div>
-                        <div class="col-lg-5" style="margin-left: -25%;">
-                            <form>
-                                <input type="text" placeholder="descricao">
-                            </form>
-                        </div>
-                        <div class="col-lg-2" style="margin-left: -23%;">
-                            <input type='button' onclick='insereTexto()' value='+'/>
-                        </div>
-                    </div>
-                    <div class="row control-group" style="padding-top: 3%;">
-                        <div class="col-lg-4">
-                            <form method="post" value="Categoria">
-                                <select name="categoria">
-                                    <option value="alimentacao">Alimentação</option>
-                                    <option value="reformas_reparos">Reformas e Reparos</option>
-                                    <option value="arte_cultura">Arte e Cultura</option>
-                                    <option value="saude">Saúde</option>
-                                    <option value="educacao">Educação</option>
-                                    <option value="moda_estetica_beleza">Moda, Estética e Beleza</option>
-                                    <option value="animais">Animais</option>
-                                    <option value="hospedagem">Hospedagem</option>
-                                    <option value="informatica">Informática</option>
-                                </select>
-                            </form>
-                            <p class="help-block text-danger"></p>
-                        </div>  
-                        <div class="col-lg-4">
+                        <div id="origem" class="col-lg-10">    
+                            <div class="col-lg-7">
+                                
+                                Tipo Contato: {{ formContato.tipo }}
+                                {{ formContato.tipo.errors }}                        
+                
+                                <br>
+                            </div>
+                            <div class="col-lg-5" style="margin-left: -25%;">
                             
-                            <form method="post" value="Sub-Categoria">
-                                <select name="alimentacao">
-                                    <option value="lanches">Lanches</option>
-                                    <option value="tapioca">Tapioca</option>
-                                </select>
-                                <select name="reformas_reparos">
-                                    <option value="construcao">Construcao</option>
-                                    <option value="pinturas">Pinturas</option>
-                                </select>
-                            </form>
-                            <p class="help-block text-danger"></p>  
-                        </div>
+                                   {{ formContato.descricaoContato }}
+                                   {{ formContato.descricaoContato.errors }} 
+                                   <br>
+                            
+                            </div>
+                        </div> 
+                    </div>  
+                    <br>
+                    <div class="row"></div>
+                    <div class="row control-group" style="padding-top: 3%;">
+                        <div class="col-lg-8">
+      
+                            Categoria: {{ formCadastroServico.categoria }}
+                            {{ formCadastroServico.categoria.errors }}       
+                            <p class="help-block text-danger"></p>
+                         
+                        </div>  
                     </div>
                     <div class="row control-group" style="padding-top: 3%; margin-left: 0.25%;">
-                        <form>
-                            {{ formCadastroServico.informacoes_servico }}
-                        </form>
-                    </div>
+                       
+                            {{ formCadastroServico.informacoesServico }}
+                            {{ formCadastroServico.informacoesServico.errors }}
+                        
+                    </div> 
                     <br>
                     <div class="row">
-                    <div class="col-lg-6">
-                    <input type="radio" name="opcao" onclick="toggle('maisinfo');"> Cadastrar Estabelecimento 
-                    <div id="maisinfo" style="display:none">
+                        Cadastre seu endereço ou o endereço do seu Estabelecimento (Se houver):
                         <br>
-                        <form>
-                            {{ formCidade.descricao }}
-                        </form>
+                            {{ formEndereco.cidade }}
+                            {{ formEndereco.cidade.errors }}
                         <br>
-                        <form>
-                            {{ formEndereco.bairro }}
-                        </form>
+                            {{ formBairro.bairro }}
+                            {{ formBairro.bairro.errors }}  
                         <br>
-                        <form>
+                            {{ formRua.rua }}
+                            {{ formRua.rua.errors }}    
+                        <br>
                             {{ formEndereco.numero }}
-                        </form>
-                        <br>
-                        <form>
-                            {{ formEndereco.rua }}
-                        </form>
-                        <br>
-                        <form>
-                            {{ formEndereco.complemento }}
-                        </form>
-                       
-                    </div>
-                    </div>
-                    <div class="col-lg-6">
-                    <input type="radio" name="opcao" onclick="toggle('maisinformacao');"> Cadastrar Região de Atendimento
-                    <div id="maisinformacao" style="display:none">
-                        <br>
-                        <form>
-                            {{ formCidade.descricao }}
-                        </form>
-                    </div>
-                    </div>
+                            {{ formEndereco.numero.errors }}                    
+
                     </div>
                     <div class="row control-group" style="padding-top: 3%; margin-left: 0.25%;">
-                        <form>
-                            {{ formCadastroServico.informacoes_preco }}
-                        </form>
+                    
+                            {{ formCadastroServico.informacoesPreco }}
+                            {{ formCadastroServico.informacoesPreco.errors }}
+                    
                     </div>
+
                     <div class="row" style="padding-top: 3%;">
                         <div class="form-group col-xs-12">
                          
-                         <p style="font-size: 14px">
+                        <p style="font-size: 14px">
                             Adicione uma Imagem:
-                         </p>
-                            
-                            <input id="descricao_imagem" type="file" name="descricao_imagem">
-                            
+                        </p>
+                            {{ formImagem.as_p }}
+                            {{ formImagem.as_p.errors }}
                         </div>
                     </div>
                     <br>

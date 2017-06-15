@@ -11,6 +11,7 @@
     <meta name="author" content="">
 
     <title>Bússola</title>
+    <link rel="shortcut icon" href="{% static 'img/logoBussola.png' %}">
 
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -25,6 +26,46 @@
 </head>
 
 <body>
+
+    <!-- Navigation logado ou não -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                {% if user.is_authenticated %}
+                    <li class="page-scroll">
+                        <a class="navbar-brand" href="{% url 'bussola:pagina_usuario' %}">Bússola</a>
+                    </li>
+                {% else %}
+                    <li class="page-scroll">
+                        <a class="navbar-brand" href="{% url 'bussola:index' %}">Bússola</a>
+                    </li>
+                {% endif %}
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+              <li class="page-scroll">
+                            <a href="#"><img src="{% static 'img/login.png' %}" class="img-responsive" style="width:20px;height:20px;float:left;margin-right:6px;">{{ request.user }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-scroll">
+                            <a href="{% url 'bussola:login' %}"><img src="{% static 'img/login.png' %}" class="img-responsive" style="width:20px;height:20px;float:left;margin-right:6px;">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <br>
+    <br>
     <div class= "container-fluid">
         <div class="row">
             <div class="col-lg-12 text-center" style="padding-bottom: 5%; padding-top: 5%;">
@@ -36,7 +77,7 @@
 
     <!-- INFORMAÇÕES PRINCIPAIS -->
     <div class= "container-fluid" style="margin-left: 10%; margin-right: 10%;">
-        <div class="row">
+        <!--<div class="row">
             <div class="col-lg-6">
                Nome do Serviço
                <br>
@@ -59,133 +100,22 @@
                 </div>
            </div>
         </div>
-        <hr>
+        <hr>-->
         <div class="row">
-            <div class="col-lg-6">
-               Nome do Serviço
-               <br>
-               Endereço
-           </div>
-           <div class="col-lg-6">
-                <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-                <div class="estrelas" style="margin-left: 18%;">
-                  <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-                  <label for="cm_star-1"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-1" name="fb" value="1"/>
-                  <label for="cm_star-2"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-2" name="fb" value="2"/>
-                  <label for="cm_star-3"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-3" name="fb" value="3"/>
-                  <label for="cm_star-4"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-4" name="fb" value="4"/>
-                  <label for="cm_star-5"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-5" name="fb" value="5"/>
-                </div>
-           </div>
+            <form>
+              <tbody>
+                  {% for servicos in servico %}
+                  <a href="{% url 'bussola:servico' %}"><tr>
+                      <h4><td id="nomeServico">{{servicos.nomeServico}}</td></h4>
+                      <br>
+                      <td id="informacoesServico">{{servicos.informacoesServico}}</td>
+                  </tr></a>
+                  <hr>
+                  {% endfor %}
+              </tbody>
+        </form>     
         </div>
-        <hr>
-        <div class="row">
-            <div class="col-lg-6">
-               Nome do Serviço
-               <br>
-               Endereço
-           </div>
-           <div class="col-lg-6">
-                <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-                <div class="estrelas" style="margin-left: 18%;">
-                  <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-                  <label for="cm_star-1"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-1" name="fb" value="1"/>
-                  <label for="cm_star-2"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-2" name="fb" value="2"/>
-                  <label for="cm_star-3"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-3" name="fb" value="3"/>
-                  <label for="cm_star-4"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-4" name="fb" value="4"/>
-                  <label for="cm_star-5"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-5" name="fb" value="5"/>
-                </div>
-           </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-lg-6">
-               Nome do Serviço
-               <br>
-               Endereço
-           </div>
-           <div class="col-lg-6">
-                <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-                <div class="estrelas" style="margin-left: 18%;">
-                  <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-                  <label for="cm_star-1"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-1" name="fb" value="1"/>
-                  <label for="cm_star-2"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-2" name="fb" value="2"/>
-                  <label for="cm_star-3"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-3" name="fb" value="3"/>
-                  <label for="cm_star-4"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-4" name="fb" value="4"/>
-                  <label for="cm_star-5"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-5" name="fb" value="5"/>
-                </div>
-           </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-lg-6">
-               Nome do Serviço 
-               <br>
-               Endereço
-           </div>
-           <div class="col-lg-6">
-                <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-                <div class="estrelas" style="margin-left: 18%;">
-                  <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-                  <label for="cm_star-1"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-1" name="fb" value="1"/>
-                  <label for="cm_star-2"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-2" name="fb" value="2"/>
-                  <label for="cm_star-3"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-3" name="fb" value="3"/>
-                  <label for="cm_star-4"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-4" name="fb" value="4"/>
-                  <label for="cm_star-5"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-5" name="fb" value="5"/>
-                </div>
-           </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-lg-6">
-               Nome do Serviço
-               <br>
-               Endereço
-           </div>
-           <div class="col-lg-6">
-                <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-                <div class="estrelas" style="margin-left: 18%;">
-                  <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-                  <label for="cm_star-1"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-1" name="fb" value="1"/>
-                  <label for="cm_star-2"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-2" name="fb" value="2"/>
-                  <label for="cm_star-3"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-3" name="fb" value="3"/>
-                  <label for="cm_star-4"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-4" name="fb" value="4"/>
-                  <label for="cm_star-5"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-5" name="fb" value="5"/>
-                </div>
-           </div>
-        </div>
-        <hr>
-        
-        
     </div>
-
-    <a href="{% url 'cajulu:lista_servicos' %}" style="margin-left: 49%; padding-bottom: 3%;">Próximo</a>
-
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
