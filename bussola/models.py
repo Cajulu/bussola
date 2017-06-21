@@ -28,10 +28,17 @@ class Categoria(models.Model):
 	def __str__(self):
 		return self.categoria
 
+class Cidade(models.Model):
+	cidade  = models.CharField(max_length=200)
+
+	def __str__(self):
+		return self.cidade
+
 class Servico(models.Model):
 	nomeServico = models.CharField(max_length=200)
 	informacoesServico = models.CharField(max_length=200)
 	informacoesPreco = models.CharField(max_length=200)
+	cidade = models.ForeignKey(Cidade, null=True, blank=False, verbose_name='Cidade')
 	categoria = models.ForeignKey(Categoria, null=True, blank=False, verbose_name='Categoria')
 	usuario = models.ForeignKey(Usuario, null=True, blank=False, verbose_name='Usuario')
 
@@ -50,12 +57,6 @@ class Rua(models.Model):
 	def __str__(self):
 		return self.rua
 
-class Cidade(models.Model):
-	cidade  = models.CharField(max_length=200)
-
-	def __str__(self):
-		return self.cidade
-
 class Bairro(models.Model):
 	bairro = models.CharField(max_length=200)
 
@@ -66,14 +67,13 @@ class Endereco(models.Model):
 	numero = models.IntegerField()
 	bairro = models.ForeignKey(Bairro, null=True, blank=False, verbose_name='Bairro')
 	rua = models.ForeignKey(Rua, null=True, blank=False, verbose_name='Rua')
-	cidade = models.ForeignKey(Cidade, null=True, blank=False, verbose_name='Cidade')
 	servico = models.ForeignKey(Servico, null=True, blank=False, verbose_name='Servico')
 
 	def __str__(self):
 		return self.cidade.cidade
 
 class Imagens(models.Model):
-	descricaoImagem = models.ImageField(max_length=200)
+	descricaoImagem = models.ImageField(upload_to="bussola/static/img")
 	servico = models.ForeignKey(Servico, null=True, blank=False, verbose_name='Servico')
 
 	def __str__(self):

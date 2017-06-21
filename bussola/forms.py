@@ -32,7 +32,7 @@ class UserCadastroForm(forms.ModelForm):
 		}
 		
 	#salva no BD
-	
+
 	def save(self, commit=True):
 		user = super(UsuarioCadastroForm, self).save(commit=False)
 		user.set_password()
@@ -54,12 +54,13 @@ class UsuarioLoginForm(forms.ModelForm):
 class CadastroServicoForm(forms.ModelForm):
 	class Meta:
 		model = Servico
-		fields = ['nomeServico', 'informacoesServico', 'informacoesPreco','categoria']
+		fields = ['nomeServico', 'informacoesServico', 'informacoesPreco', 'cidade', 'categoria']
 
 		widgets = {
 			'nomeServico': forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Nome do serviço', 'name':'nomeServico', 'id':'nomeServico','maxlength':255}),
 			'informacoesServico': forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Informações do Serviço', 'name':'informacoesServico', 'id':'informacoesServico','maxlength':255}),
 			'informacoesPreco': forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Informações de Preço', 'name':'informacoesPreco', 'id':'informacoesPreco','maxlength':255}),
+			'cidade': forms.Select(attrs={'id':'id-cidade','class':' selectField'}),
 			'categoria': forms.Select(attrs={'id':'id-categoria','class':'selectField'})
 		}
 
@@ -95,10 +96,9 @@ class TipoContatoForm(forms.ModelForm):
 class EnderecoForm(forms.ModelForm):
 	class Meta:
 		model = Endereco
-		fields = ['cidade', 'numero']
+		fields = ['numero']
 
 		widgets = {
-		'cidade': forms.Select(attrs={'id':'id-cidade','class':' selectField'}),
 		'numero': forms.TextInput(attrs={'placeholder':'Número', 'name':'numero', 'id':'numero'}),
 		
 		}
@@ -132,6 +132,11 @@ class ImagemForm(forms.ModelForm):
 	class Meta:
 		model = Imagens
 		fields = ['descricaoImagem']
+
+
+class PesquisaForm(forms.Form):
+    servico = forms.CharField(label='Serviço:', max_length=100)
+    cidade = forms.CharField(label='Cidade:', max_length=100)
 
 #AINDA NAO UTILIZADOS
 class FaleConoscoForm(forms.ModelForm):

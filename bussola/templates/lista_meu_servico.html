@@ -62,9 +62,9 @@
     <div class= "container-fluid" style="text-align: center;">
         <form >
            
-                    {% for servicos in servico|dictsort:"nomeServico" %}
+                    {% for servicos in servico %}
                    
-                        <a href="{% url 'bussola:meu_servico' %}" id="nomeServico">{{servicos.nomeServico}}</a><br>
+                        <a href="{% url 'bussola:meu_servico' pk=servico.pk %}" id="nomeServico">{{servicos.nomeServico}}</a><br>
                     
                     {% endfor %}
            

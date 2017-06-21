@@ -77,38 +77,14 @@
 
     <!-- INFORMAÇÕES PRINCIPAIS -->
     <div class= "container-fluid" style="margin-left: 10%; margin-right: 10%;">
-        <!--<div class="row">
-            <div class="col-lg-6">
-               Nome do Serviço
-               <br>
-               Endereço
-           </div>
-           <div class="col-lg-6">
-                <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-                <div class="estrelas" style="margin-left: 18%;">
-                  <input type="radio" id="cm_star-empty" name="fb" value="" checked/>
-                  <label for="cm_star-1"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-1" name="fb" value="1"/>
-                  <label for="cm_star-2"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-2" name="fb" value="2"/>
-                  <label for="cm_star-3"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-3" name="fb" value="3"/>
-                  <label for="cm_star-4"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-4" name="fb" value="4"/>
-                  <label for="cm_star-5"><i class="fa"></i></label>
-                  <input type="radio" id="cm_star-5" name="fb" value="5"/>
-                </div>
-           </div>
-        </div>
-        <hr>-->
         <div class="row">
             <form>
               <tbody>
-                  {% for servicos in servico %}
-                  <a href="{% url 'bussola:servico' %}"><tr>
-                      <h4><td id="nomeServico">{{servicos.nomeServico}}</td></h4>
+                  {% for servico in servicos %}
+                  <a href="{% url 'bussola:servico' pk=servico.pk %}"><tr>
+                      <h4><td id="nomeServico">{{servico.nomeServico}}</td></h4>
                       <br>
-                      <td id="informacoesServico">{{servicos.informacoesServico}}</td>
+                      <td id="informacoesServico">{{servico.informacoesServico}}</td>
                   </tr></a>
                   <hr>
                   {% endfor %}

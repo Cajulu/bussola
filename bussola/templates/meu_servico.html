@@ -67,34 +67,41 @@
     </div>
     <!-- INFORMAÇÕES PRINCIPAIS -->
     <div class= "container-fluid">
-        <div class="row">
-            <form>
-                {% for servico in servicos %}
+            <div class="row">
+                <form>
+           
+                        
+                        <h1>{{servico.nomeServico}}</h1>
+
                     
-                    <h1>{{servico.nomeServico}}</h1>
+                </form>
+            </div>
+            <br>
+            <div class="row">
+                <h4>Endereço</h4>
+                <p>{{endereco.rua}}, {{endereco.numero}}, {{endereco.bairro}}, {{endereco.cidade}}</p>
+                
+            </div>
+            <br>
+            <div class="row">
+                <h4>Contatos</h4>
+                <p>{{contato.descricaoContato}}</p>
+                <br>
+                <h4>Informações do Serviço</h4>
+                <p>{{servico.informacoesServico}}</p>
 
-                {% endfor %}
-            </form>
-        </div>
-        <br>
-        <div class="row">
-            <h4>Endereço</h4>
-        </div>
-        <br>
-        <div class="row">
-            <h4>Contatos</h4>
-        </div>
-        <br>
-        <div class="row">
-            <p>Sobre o serrviço: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vestibulum nec ex vel semper. Phasellus quis vestibulum lorem. Donec ornare turpis sit amet nulla ultricies hendrerit. Aliquam at ullamcorper elit. Nulla facilisi. Etiam ornare, nibh laoreet feugiat rutrum, mauris nulla volutpat justo, eu lobortis nunc leo vitae leo. Nullam est eros, vehicula et tincidunt ut, suscipit eget nisi.</p>
-        </div>
-    </div>
-    <br>
-    <div class="row text-center">
-                <h4>Preço Médio</h4>
-    </div>
-    
+                <h4>Foto</h4>
+                <p>{{imagem.descricaoImagem}}</p>
 
+            </div>
+        </div>
+        
+        <br>
+        
+        <div class="row text-center">
+            <h4>{{servico.informacoesPreco}}</h4>
+        </div>
+        
     <!-- GALERIA -->
     <!--<section id="portfolio">
         <div class="container">

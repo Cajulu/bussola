@@ -10,23 +10,25 @@ import json
 from django.http import HttpResponse
  
 def index(request):
-    """if request.method == 'POST':
+    if request.method == 'POST':
         formPesquisa = PesquisaForm(request.POST)
-
+        
         if formPesquisa.is_valid():
-            pesquisaServico = formPequisa.cleaned_data['pesquisaServico']
-            pesquisaRegiao = formPesquisa.cleaned_data['pesquisaRegiao']
-
-            #FAZER O SELECT
-
-            return render(request, 'index.html', {})
-
+            servico = formPesquisa.cleaned_data['servico']
+            cidade = formPesquisa.cleaned_data['cidade']
+            cidadeAux = Cidade.objects.filter(cidade=cidade)
+            servicos = Servico.objects.filter(nomeServico=servico, cidade=cidadeAux)
+        return redirect('/lista_pesquisa_servico/', {'servicos':servicos})
+    
     else:
-        formPesquisa = PesquisaForm()"""
+    
+        categorias = Categoria.objects.all()
+    
+        formPesquisa = PesquisaForm()
+        
+    
+    return render(request, 'index.html', {'categorias':categorias, 'formPesquisa':formPesquisa})
 
-    return render(request, 'index.html')
-
-	
  
 def do_login(request):
     formLogin = UsuarioLoginForm()
@@ -97,10 +99,13 @@ def cadastroServico(request):
             informacoesServico = formCadastroServico.cleaned_data['informacoesServico'] 
             informacoesPreco = formCadastroServico.cleaned_data['informacoesPreco']
 
+            cidade = formCadastroServico.cleaned_data['cidade']
+            cidadeAux = Cidade.objects.get(pk=cidade.pk)
+
             categoria = formCadastroServico.cleaned_data['categoria']
             categoriaAux = Categoria.objects.get(pk=categoria.pk)
 
-            servico = Servico.objects.create( nomeServico=nomeServico, informacoesServico=informacoesServico, informacoesPreco=informacoesPreco, categoria=categoriaAux, usuario=usuario)
+            servico = Servico.objects.create( nomeServico=nomeServico, informacoesServico=informacoesServico, informacoesPreco=informacoesPreco, cidade=cidadeAux, categoria=categoriaAux, usuario=usuario)
             servico.save()
 
             descricaoImagem = formImagem.cleaned_data['descricaoImagem']
@@ -120,10 +125,7 @@ def cadastroServico(request):
             rua = Rua.objects.create(rua=nomeRua)
             rua.save()
 
-            cidade = formEndereco.cleaned_data['cidade']
-            cidadeAux = Cidade.objects.get(pk=cidade.pk)
-
-            endereco = Endereco.objects.create(bairro=bairro, numero=numero, rua=rua, cidade=cidadeAux, servico=servico)
+            endereco = Endereco.objects.create(bairro=bairro, numero=numero, rua=rua, servico=servico)
             endereco.save()
 
             tipo = formContato.cleaned_data['tipo']
@@ -153,50 +155,60 @@ def recuperacaoSenha(request):
 
 @login_required
 def paginaUsuario(request):
-    """ if request.method == 'POST':
+    
+    if request.method == 'POST':
         formPesquisa = PesquisaForm(request.POST)
-
+        
         if formPesquisa.is_valid():
-            pesquisaServico = formPequisa.cleaned_data['pesquisaServico']
-            pesquisaRegiao = formPesquisa.cleaned_data['pesquisaCidade']
-
-
-
-            #FAZER O SELECT
-
-            return render(request, 'pagina_usuario.html', {'formPesquisa':formPesquisa})
-
+            servico = formPesquisa.cleaned_data['servico']
+            cidade = formPesquisa.cleaned_data['cidade']
+            cidadeAux = Cidade.objects.filter(cidade=cidade)
+            servicos = Servico.objects.filter(nomeServico=servico, cidade=cidadeAux)
+        return redirect('/lista_pesquisa_servico/')
+    
     else:
-        formPesquisa = PesquisaForm()"""
-    return render(request, 'pagina_usuario.html')
+    
+        categorias = Categoria.objects.all()
+    
+        formPesquisa = PesquisaForm()
+        
+    
+    return render(request, 'pagina_usuario.html', {'categorias':categorias, 'formPesquisa':formPesquisa})
 
 
 @login_required
 def listaMeuServico(request):
     user = request.user
     usuario = Usuario.objects.get(user=user)
-    servico = Servico.objects.all().filter(usuario=usuario)
+    servico = Servico.objects.filter(usuario=usuario)
     return render(request, 'lista_meu_servico.html', {'servico': servico})
 
 @login_required
-def meuServico(request):
-    user = request.user
-    usuario = Usuario.objects.get(user=user)
-    servico = Servico.objects.all().filter(usuario=usuario)
-    return render(request, 'meu_servico.html', {})
+def meuServico(request, pk):
+    servico = Servico.objects.get(pk=pk)
+    endereco = Endereco.objects.get(servico=servico)
+    contato = Contato.objects.get(servico = servico)
+    return render(request, 'meu_servico.html', {'servico': servico, 'endereco':endereco, 'contato':contato})
 
 @login_required
 def alterarServico(request):
     return render(request, 'alterar_servico.html', {})
 
-def listaServicos(request):
-    servico = Servico.objects.all().filter()
-    return render(request, 'lista_servicos.html', {'servico': servico})
+def categoria(request, pk):
+    categoria = Categoria.objects.get(pk=pk)
+    servicos = Servico.objects.filter(categoria=categoria)
+    return render(request, 'lista_servicos.html', {'servicos': servicos})
 
-def servico(request):
-    servico = Servico.objects.all().filter()
-    return render(request, 'servico.html', {'servico': servico})
-    
-def servicoLogin(request):
-    return render(request, 'servico_login.html', {})
+def servico(request, pk):
+    servico = Servico.objects.get(pk=pk)
+    endereco = Endereco.objects.get(servico=servico)
+    contato = Contato.objects.get(servico = servico)
+    imagem = Imagens.objects.get(servico=servico)
+    return render(request, 'servico.html', {'servico': servico, 'endereco':endereco, 'contato':contato, 'imagem':imagem})
 
+
+def pesquisaServico(request):
+    servicos = Servico.objects.all()
+    return render(request, 'lista_pesquisa_servico.html', {'servicos': servicos})
+
+#https://rayed.com/wordpress/?p=1266

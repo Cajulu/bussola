@@ -75,19 +75,9 @@
                             <span class="skills sombra">Encontre o que você precisa aqui!</span>
                         </div>
                     </div> 
-                <form action="{% url 'bussola:lista_servicos' %}" method="POST">
+                <form action="" method="POST">
                 {% csrf_token %}
-                    <div class="row">
-                        <div class="col-lg-5" style="margin-top: 20%;">
-                            <form>
-                              <input class="form-pesquisa" type="text" name="busca" placeholder="Que serviço precisa?">
-                            </form>
-                        </div>
-                        <div class="col-lg-5" style="margin-top: 20%;">
-                            <form>
-                              <input class="form-pesquisa" type="text" name="busca" placeholder="Em que cidade precisa?">
-                            </form>
-                        </div>
+                    {{formPesquisa}}
                         <div class="col-lg-2" style="margin-top: 20%;">
                             <form>
                               <button class="btn btn-success btn-lg" type="submit">Pesquisar</button>
@@ -110,100 +100,18 @@
                 </div>
             </div>
             <div class="row">
+            {% for categoria in categorias %}
                 <div class="col-sm-4 portfolio-item">
-                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
+                    <a href="{% url 'bussola:categoria' pk=categoria.pk %}" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                ALIMENTAÇÃO
+                                {{categoria.categoria}}
                             </div>
                         </div>
-                        <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Alimantação">
+                        <img src="" class="img-responsive" alt={{categoria.categoria}}>
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                REFORMAS E REPAROS
-                            </div>
-                        </div>
-                        <img src="{% static 'img/categoria/reformas_reparos.jpg' %}" class="img-responsive" alt="Reformas e Reparos">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                   <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                               ARTE E CULTURA
-                            </div>
-                        </div>
-                        <img src="{% static 'img/categoria/arte_cultura.jpg' %}" class="img-responsive" alt="Arte e Cultura">
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4 portfolio-item">
-                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                SAÚDE
-                            </div>
-                        </div>
-                        <img src="{% static 'img/categoria/saude.jpg' %}" class="img-responsive" alt="Saúde">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                EDUCAÇÃO
-                            </div>
-                        </div>
-                        <img src="{% static 'img/categoria/educacao.jpg' %}" class="img-responsive" alt="Educação">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                MODA, ESTÉTICA E BELEZA
-                            </div>
-                        </div>
-                        <img src="{% static 'img/categoria/estetica_beleza.jpg' %}" class="img-responsive" alt="Estética e Beleza">
-                    </a>
-                </div>
-            </div>
-            <div class="row"> 
-                <div class="col-sm-4 portfolio-item">
-                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                ANIMAIS
-                            </div>
-                        </div>
-                        <img src="{% static 'img/categoria/animais.jpg' %}" class="img-responsive" alt="Animais">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                HOSPEDAGEM
-                            </div>
-                        </div>
-                        <img src="{% static 'img/categoria/hospedagem.jpg' %}" class="img-responsive" alt="Hospedagem">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                   <a href="{% url 'bussola:lista_servicos' %}" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                INFORMÁTICA
-                            </div>
-                        </div>
-                        <img src="{% static 'img/categoria/informatica.jpg' %}" class="img-responsive" alt="Informática">
-                    </a>
-                </div>
+            {% endfor %}
             </div>
         </div>
     </section>
