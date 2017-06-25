@@ -15,20 +15,18 @@ def index(request):
         
         if formPesquisa.is_valid():
             servico = formPesquisa.cleaned_data['servico']
-            cidade = formPesquisa.cleaned_data['cidade']
-            cidadeAux = Cidade.objects.filter(cidade=cidade)
-            servicos = Servico.objects.filter(nomeServico=servico, cidade=cidadeAux)
-        return redirect('/lista_pesquisa_servico/', {'servicos':servicos})
+            servicoPesquisado = Servico.objects.filter(nomeServico=servico)
+            return redirect('/lista_pesquisa_servico/', {'servicoPesquisado':servicoPesquisado})
     
     else:
-    
-        categorias = Categoria.objects.all()
-    
         formPesquisa = PesquisaForm()
         
-    
+    categorias = Categoria.objects.all()
     return render(request, 'index.html', {'categorias':categorias, 'formPesquisa':formPesquisa})
 
+def listaPesquisaServico(request):
+    servicos = Servico.objects.all()
+    return render(request, 'lista_pesquisa_servico.html', {'servicos': servicos})
  
 def do_login(request):
     formLogin = UsuarioLoginForm()
@@ -78,43 +76,35 @@ def cadastroServico(request):
 
         formImagem = ImagemForm(request.POST, request.FILES )
         
-        formCidade = CidadeForm(request.POST)
-        
         formContato = ContatoForm(request.POST)
-        
-        formTipoContato = TipoContatoForm(request.POST)
-        
-        formCategoria = CategoriaForm(request.POST)
 
         formRua = RuaForm(request.POST)
 
-        formBairro = BairroForm(request.POST)
-
-
-        
-        if formCadastroServico.is_valid () and formCategoria.is_valid() and formContato.is_valid() and formTipoContato.is_valid() and formEndereco.is_valid() and formCidade.is_valid() and formImagem.is_valid() and formRua.is_valid() and formBairro.is_valid():
+        formBairro =BairroForm(request.POST)
+    
+        if formCadastroServico.is_valid () and formContato.is_valid() and formEndereco.is_valid() and formImagem.is_valid() and formRua.is_valid() and formBairro.is_valid():
             
             #certo!
             nomeServico = formCadastroServico.cleaned_data['nomeServico']
             informacoesServico = formCadastroServico.cleaned_data['informacoesServico'] 
             informacoesPreco = formCadastroServico.cleaned_data['informacoesPreco']
 
-            cidade = formCadastroServico.cleaned_data['cidade']
-            cidadeAux = Cidade.objects.get(pk=cidade.pk)
-
             categoria = formCadastroServico.cleaned_data['categoria']
             categoriaAux = Categoria.objects.get(pk=categoria.pk)
 
-            servico = Servico.objects.create( nomeServico=nomeServico, informacoesServico=informacoesServico, informacoesPreco=informacoesPreco, cidade=cidadeAux, categoria=categoriaAux, usuario=usuario)
+            servico = Servico.objects.create( nomeServico=nomeServico, informacoesServico=informacoesServico, informacoesPreco=informacoesPreco, categoria=categoriaAux, usuario=usuario)
             servico.save()
 
             descricaoImagem = formImagem.cleaned_data['descricaoImagem']
-            #nome = formImagem.cleaned_data['nome']
+
             imagem = Imagens.objects.create(descricaoImagem=descricaoImagem, servico=servico)
             imagem.save()
         
-            #imagem = formImagem.cleaned_data['imagem']
             #certo!
+
+            cidade = formEndereco.cleaned_data['cidade']
+            cidadeAux = Cidade.objects.get(pk=cidade.pk)
+            
             nomeBairro = formBairro.cleaned_data['bairro']
             bairro = Bairro.objects.create(bairro=nomeBairro)
             bairro.save()
@@ -125,7 +115,7 @@ def cadastroServico(request):
             rua = Rua.objects.create(rua=nomeRua)
             rua.save()
 
-            endereco = Endereco.objects.create(bairro=bairro, numero=numero, rua=rua, servico=servico)
+            endereco = Endereco.objects.create(bairro=bairro, numero=numero, rua=rua, cidade=cidadeAux, servico=servico)
             endereco.save()
 
             tipo = formContato.cleaned_data['tipo']
@@ -141,14 +131,12 @@ def cadastroServico(request):
         formCadastroServico = CadastroServicoForm()
         formEndereco = EnderecoForm()
         formImagem = ImagemForm()
-        formCidade = CidadeForm()
         formContato = ContatoForm()
-        formTipoContato = TipoContatoForm()
-        formCategoria = CategoriaForm()
-        formBairro = BairroForm()
         formRua = RuaForm()
+        formBairro =BairroForm()
+       
 
-    return render(request, 'cadastro_servico.html', {'formCadastroServico':formCadastroServico, 'formCategoria':formCategoria, 'formContato':formContato, 'formTipoContato':formTipoContato, 'formEndereco':formEndereco, 'formCidade':formCidade, 'formImagem':formImagem, 'formRua':formRua, 'formBairro':formBairro})
+    return render(request, 'cadastro_servico.html', {'formCadastroServico':formCadastroServico,  'formContato':formContato, 'formEndereco':formEndereco,'formImagem':formImagem, 'formRua':formRua, 'formBairro':formBairro})
 
 def recuperacaoSenha(request):
     return render(request, 'recuperacao_senha.html', {})
@@ -161,39 +149,144 @@ def paginaUsuario(request):
         
         if formPesquisa.is_valid():
             servico = formPesquisa.cleaned_data['servico']
-            cidade = formPesquisa.cleaned_data['cidade']
-            cidadeAux = Cidade.objects.filter(cidade=cidade)
-            servicos = Servico.objects.filter(nomeServico=servico, cidade=cidadeAux)
-        return redirect('/lista_pesquisa_servico/')
+            servicoPesquisado = Servico.objects.filter(nomeServico=servico)
+            return redirect('/lista_pesquisa_servico/', {'servicoPesquisado':servicoPesquisado})
     
     else:
-    
-        categorias = Categoria.objects.all()
-    
         formPesquisa = PesquisaForm()
         
-    
-    return render(request, 'pagina_usuario.html', {'categorias':categorias, 'formPesquisa':formPesquisa})
+    categorias = Categoria.objects.all()
+    return render(request, 'index.html', {'categorias':categorias, 'formPesquisa':formPesquisa})
 
+
+def novaSenha(request):
+
+    formUsu = UserCadastroForm(request.POST) 
+    formSenha = SenhaForm(request.POST)
+
+    if request.method == 'POST':
+        print(request)
+        if formUsu.is_valid() and formSenha.is_valid():
+            nome = formUsu.cleaned_data['username']
+            senha = formSenha.cleaned_data['senha']
+            novaSenha = formUsu.cleaned_data['password']
+            filtro = User.objects.get(username=nome, password=senha)
+            filtro.password = novaSenha
+            filtro.save()
+        
+            return redirect('/login/')
+
+        else:
+            formUsu = UserCadastroForm()
+            formSenha = SenhaForm()
+
+    return render(request, 'recuperacao_senha.html', {'formUsu':formUsu, 'formSenha': formSenha})
 
 @login_required
 def listaMeuServico(request):
     user = request.user
     usuario = Usuario.objects.get(user=user)
-    servico = Servico.objects.filter(usuario=usuario)
-    return render(request, 'lista_meu_servico.html', {'servico': servico})
+    servicos = Servico.objects.filter(usuario=usuario)
+    return render(request, 'lista_meu_servico.html', {'servicos': servicos})
 
 @login_required
 def meuServico(request, pk):
-    servico = Servico.objects.get(pk=pk)
+    servico = get_object_or_404(Servico, pk=pk)
     endereco = Endereco.objects.get(servico=servico)
     contato = Contato.objects.get(servico = servico)
-    return render(request, 'meu_servico.html', {'servico': servico, 'endereco':endereco, 'contato':contato})
+    imagem = Imagens.objects.get(servico=servico)
+    return render(request, 'meu_servico.html', {'servico': servico, 'endereco':endereco, 'contato':contato, 'imagem':imagem})
 
 @login_required
-def alterarServico(request):
-    return render(request, 'alterar_servico.html', {})
+def alterarServico(request, pk):
+    servico = get_object_or_404(Servico, pk=pk)
 
+    user = request.user
+    usuario = Usuario.objects.get(user=user.pk)
+
+    if request.method == 'POST':
+
+        formCadastroServico = CadastroServicoForm(request.POST, request.FILES, instance=servico)
+        
+        formEndereco = EnderecoForm(request.POST, instance=servico)
+
+        formImagem = ImagemForm(request.POST, request.FILES, instance=servico)
+        
+        
+        formContato = ContatoForm(request.POST, instance=servico)
+        
+        formRua = RuaForm(request.POST)
+
+        formBairro =BairroForm(request.POST)
+        
+
+
+        if formCadastroServico.is_valid () and formContato.is_valid() and formEndereco.is_valid() and formImagem.is_valid() and formRua.is_valid() and formBairro.is_valid():
+            
+            #certo!
+            formCadastroServico.save() 
+        
+            formEndereco.save() 
+            formImagem.save()     
+            
+            formContato.save() 
+            
+            formRua.save()
+
+            formBairro.save()
+        
+           
+                
+            return redirect('/lista_meu_servico/')
+    
+    else:
+        formCadastroServico = CadastroServicoForm(instance=servico)
+        formEndereco = EnderecoForm(instance=servico)
+        formImagem = ImagemForm(instance=servico)
+       
+        formContato = ContatoForm(instance=servico)
+        formRua = RuaForm()
+        formBairro =BairroForm()
+        
+        
+
+    return render(request, 'alterar_servico.html', {'formCadastroServico':formCadastroServico, 'formContato':formContato,'formEndereco':formEndereco, 'formImagem':formImagem, 'formRua':formRua, 'formBairro':formBairro})
+
+    """
+    formCadastroServico = CadastroServicoForm(request.POST, request.FILES, instance=servico)
+        
+    formEndereco = EnderecoForm(request.POST or None, instance=servico)
+
+    formImagem = ImagemForm(request.POST, request.FILES, instance=servico)
+    
+    formCidade = CidadeForm(request.POST or None)
+    
+    formContato = ContatoForm(request.POST or None, instance=servico)
+    
+    formTipoContato = TipoContatoForm(request.POST or None)
+    
+    formCategoria = CategoriaForm(request.POST or None)
+
+    formRua = RuaForm(request.POST or None)
+
+    formBairro = BairroForm(request.POST or None)
+    
+    if formCadastroServico.is_valid():
+        formCadastroServico.save() 
+        
+        formEndereco.save() 
+        formImagem.save()     
+        formCidade.save() 
+        formContato.save() 
+        formTipoContato.save() 
+        formCategoria.save()
+        formRua.save() 
+        formBairro.save() 
+    
+        return redirect('/meu_servico/')
+
+    return render(request, 'cadastro_servico.html', {'formCadastroServico':formCadastroServico})
+    """
 def categoria(request, pk):
     categoria = Categoria.objects.get(pk=pk)
     servicos = Servico.objects.filter(categoria=categoria)
@@ -206,9 +299,10 @@ def servico(request, pk):
     imagem = Imagens.objects.get(servico=servico)
     return render(request, 'servico.html', {'servico': servico, 'endereco':endereco, 'contato':contato, 'imagem':imagem})
 
-
-def pesquisaServico(request):
-    servicos = Servico.objects.all()
-    return render(request, 'lista_pesquisa_servico.html', {'servicos': servicos})
-
 #https://rayed.com/wordpress/?p=1266
+
+def deletarServico(request, pk):
+    objeto = get_object_or_404(Servico, pk=pk)
+    print(objeto)
+    objeto.delete()
+    return redirect('/lista_meu_servico/')

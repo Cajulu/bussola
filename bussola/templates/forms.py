@@ -54,12 +54,13 @@ class UsuarioLoginForm(forms.ModelForm):
 class CadastroServicoForm(forms.ModelForm):
 	class Meta:
 		model = Servico
-		fields = ['nomeServico', 'informacoesServico', 'informacoesPreco', 'categoria']
+		fields = ['nomeServico', 'informacoesServico', 'informacoesPreco', 'cidade', 'categoria']
 
 		widgets = {
 			'nomeServico': forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Nome do serviço', 'name':'nomeServico', 'id':'nomeServico','maxlength':255}),
 			'informacoesServico': forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Informações do Serviço', 'name':'informacoesServico', 'id':'informacoesServico','maxlength':255}),
 			'informacoesPreco': forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Informações de Preço', 'name':'informacoesPreco', 'id':'informacoesPreco','maxlength':255}),
+			'cidade': forms.Select(attrs={'id':'id-cidade','class':' selectField'}),
 			'categoria': forms.Select(attrs={'id':'id-categoria','class':'selectField'})
 		}
 
@@ -71,6 +72,10 @@ class CadastroServicoForm(forms.ModelForm):
 
 		return servico
 #certo
+class CategoriaForm(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        fields = ['categoria']
 
 #certo
 class ContatoForm(forms.ModelForm):
@@ -78,23 +83,31 @@ class ContatoForm(forms.ModelForm):
         model = Contato
         fields = ['tipo', 'descricaoContato']
         widgets = {
-            'tipo': forms.Select(attrs={'id':'id-tipoContato','class':'selectField'}),
+            'tipo': forms.Select(attrs={'id':'id-tipoContato','class':' selectField'}),
             'descricaoContato': forms.TextInput(attrs={'placeholder':'Descrição', 'name':'descricaoContato', 'id':'descricaoContato','maxlength':255}),
             }
+
+class TipoContatoForm(forms.ModelForm):
+    class Meta:
+        model = TipoContato
+        fields = ['tipo']
 
 #certo
 class EnderecoForm(forms.ModelForm):
 	class Meta:
 		model = Endereco
-		fields = ['numero','cidade']
+		fields = ['numero']
 
 		widgets = {
 		'numero': forms.TextInput(attrs={'placeholder':'Número', 'name':'numero', 'id':'numero'}),
-		'cidade': forms.Select(attrs={'id':'id-cidade','class':'selectField'}),
+		
 		}
 
 #certo
-
+class CidadeForm(forms.ModelForm):
+	class Meta:
+		model = Cidade
+		fields = ['cidade']
 
 class RuaForm(forms.ModelForm):
 	class Meta:
@@ -123,6 +136,13 @@ class ImagemForm(forms.ModelForm):
 
 class PesquisaForm(forms.Form):
     servico = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Que serviço precisa?', 'name':'pesquisaServico', 'id':'pesquisaServico','maxlength':255}))
+    
+#AINDA NAO UTILIZADOS
+class FaleConoscoForm(forms.ModelForm):
+
+	class Meta:
+		model = FaleConosco
+		fields = '__all__'
 
 class ComentarioServicoForm(forms.ModelForm):
 
@@ -131,5 +151,3 @@ class ComentarioServicoForm(forms.ModelForm):
 		fields = '__all__'
 #END
 
-class SenhaForm(forms.Form):
-	senha = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-pesquisa', 'name':'senha', 'id':'senha','maxlength':255}))

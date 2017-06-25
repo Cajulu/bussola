@@ -26,7 +26,6 @@
 </head>
 
 <body>
-
     <!-- Navigation logado -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
@@ -41,39 +40,39 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                <li class="page-scroll">
-                    <a href="#"><img src="{% static 'img/login.png' %}" class="img-responsive" style="width:20px;height:20px;float:left;margin-right:6px;">{{ request.user }}</a>
-                </li>
-                </ul>
-            </div>
+            
         </div>
     </nav>
     <br>
     <br>
+    <div class= "container-fluid">
+        <div class="row">
+            <div class="col-lg-12 text-center" style="padding-bottom: 5%; padding-top: 5%;">
+                <h2>Esqueci minha senha</h2>
+                <hr class="star-primary">
+            </div>
+        </div>
+        <div class="row">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+<!-- jQuery -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 
-    <div class="row">
-        <div class="col-lg-12 text-center" style="padding-bottom: 5%; padding-top: 5%;">
-            <h2>Meus Serviços</h2>
-            <hr class="star-primary">
-        </div>
-    </div>
-    <div class= "container-fluid" style="text-align: center;">
-        <form >
-           
-                    {% for servico in servicos %}
-                   
-                        <a href="{% url 'bussola:meu_servico' pk=servico.pk %}" id="nomeServico">{{servico.nomeServico}}</a><br>
-                    
-                    {% endfor %}
-           
-        </form>     
-    </div>
-    <div class="row" style="text-align:center; padding-top: 5%;">
-            <form action="{% url 'bussola:cadastro_servico' %}">
-                <button class="btn btn-success btn-lg" type="submit">Cadastre um serviço!</button>
-            </form>
-        </div>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+    <script src="{% static 'js/contact_me.js' %}"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'js/freelancer.min.js' %}"></script>
+
 </body>
+
 </html>
