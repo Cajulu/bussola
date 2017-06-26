@@ -53,9 +53,6 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <!--<li class="page-scroll">
-                        <a href="#contact">Comentários</a>
-                    </li>-->
                     {% if user.is_authenticated %}
     					<li class="page-scroll">
                             <a href="#"><img src="{% static 'img/login.png' %}" class="img-responsive" style="width:20px;height:20px;float:left;margin-right:6px;">{{ request.user }}</a>
@@ -71,58 +68,44 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
+    <br><br><br><br><br><br><br>
 
     
     <!-- INFORMAÇÕES PRINCIPAIS -->
     <div class= "container-fluid">
-        <div class="col-lg-6" style="padding-bottom: 5%; padding-top: 10%;">
-            <div class="col-lg-12 text-center">
-                <h1>{{servico.nomeServico}}</h1>
+        <div class="col-lg-6">
+            <div class="row" style="text-align:center;">
+                <form>
+                    <h1>{{servico.nomeServico}}</h1>                    
+                </form>
             </div>
-            <div>
+            <br><br>
+            <div class="row">
                 <h4>Endereço</h4>
-                <p>{{endereco.rua}}, {{endereco.numero}}, {{endereco.bairro}}, {{endereco.cidade}}</p>
+                <p>{{endereco.cidade}}, {{bairro.bairro}}, {{rua.rua}}, {{endereco.numero}}</p>
                 <br>
-                <h4>Contatos</h4>
+                <h4>Contato</h4>
                 <p>{{contato.descricaoContato}}</p>
                 <br>
-                <h4>Infromações do serviço</h4>
+                <h4>Informações do Serviço</h4>
                 <p>{{servico.informacoesServico}}</p>
-
+            </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center">
+                    <h4>Imagem do serviço</h4>
+                </div>
+                <div class="row">
+                    <center><img src={{imagem.descricaoImagem.url}} height="400" width="400"></center>
+                </div>
                 <br>
-                <h4>Foto</h4>
-                <p>{{imagem.descricaoImagem}}</p>
-            
+                <div class="row" style="text-align:center;">
+                    <h4>Informações do Preço</h4>
+                    <p>{{servico.informacoesPreco}}</p>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="row text-center">
-        <h4>{{servico.informacoesPreco}}</h4>
-    </div>
-
-    <!-- GALERIA -->
-    <section id="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Fotos</h2>
-                    <hr class="star-primary">
-                </div>
-            </div>
-            <!--<div class="row">
-                <div class="col-sm-4 portfolio-item">
-                    <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Foto1">
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Foto2">
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <img src="{% static 'img/categoria/alimentacao.jpg' %}" class="img-responsive" alt="Foto3">
-                </div>
-            </div>-->
-        </div>
-    </section>
 
     <!-- RODAPÉ -->
     <footer class="text-center">

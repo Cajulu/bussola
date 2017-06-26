@@ -7,12 +7,6 @@ class Usuario(models.Model):
 	 
 	def __str__(self):
 		return self.user.username
-
-class Comentario(models.Model):
-	comentario = models.CharField(max_length=200)
-
-	def __str__(self):
-		return self.comentario
 		
 class Categoria(models.Model):
 	categoria = models.CharField(max_length=200)
@@ -36,48 +30,36 @@ class Servico(models.Model):
 	def __str__(self):
 		return self.nomeServico
 
+
+class Endereco(models.Model):
+	numero = models.IntegerField()	
+	cidade = models.ForeignKey(Cidade, null=True, blank=False, verbose_name='Cidade')
+	servico = models.ForeignKey(Servico, null=True, blank=False, verbose_name='Servico')
+
+	def __str__(self):
+		return self.cidade.cidade
+
 class Rua(models.Model):
 	rua = models.CharField(max_length=200)
-
+	endereco = models.ForeignKey(Endereco, null=True, blank=False, verbose_name='Endereco')
+	
 	def __str__(self):
 		return self.rua
 
 class Bairro(models.Model):
 	bairro = models.CharField(max_length=200)
+	endereco = models.ForeignKey(Endereco, null=True, blank=False, verbose_name='Endereco')
 
 	def __str__(self):
 		return self.bairro
 
-class Endereco(models.Model):
-	numero = models.IntegerField()
-	bairro = models.ForeignKey(Bairro, null=True, blank=False, verbose_name='Bairro')
-	rua = models.ForeignKey(Rua, null=True, blank=False, verbose_name='Rua')
-	cidade = models.ForeignKey(Cidade, null=True, blank=False, verbose_name='Cidade')
-	servico = models.ForeignKey(Servico, null=True, blank=False, verbose_name='Servico')
-	
-	def __str__(self):
-		return self.cidade.cidade
 
 class Imagens(models.Model):
-	descricaoImagem = models.ImageField(upload_to="bussola/static/img")
+	descricaoImagem = models.ImageField(upload_to='fotos', null=True)
 	servico = models.ForeignKey(Servico, null=True, blank=False, verbose_name='Servico')
 
 	def __str__(self):
 		return self.servico.nomeServico
-
-class Comenta(models.Model):
-	servico = models.ForeignKey(Servico, null=True, blank=False, verbose_name='Servico')
-	comentario = models.ForeignKey(Comentario, null=True, blank=False, verbose_name='Comentario')
-
-	def __str__(self):
-		return self.comentario
-
-class FazComentario(models.Model):
-	usuario = models.ForeignKey(Usuario, null=True, blank=False, verbose_name='Usuario')
-	comentario = models.ForeignKey(Comentario, null=True, blank=False, verbose_name='Comentario')
-
-	def __str__(self):
-		return self.comentario
 
 class TipoContato(models.Model):
 	tipo = models.CharField(max_length=200)
@@ -92,3 +74,4 @@ class Contato(models.Model):
 
 	def __str__(self):
 		return self.descricaoContato
+

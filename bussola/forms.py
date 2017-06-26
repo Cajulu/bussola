@@ -4,10 +4,8 @@ from django import forms
 from .models import *
 from django.contrib.auth.models import User
  
-  
 #Neste documento são feitos os forms que serão chamados pelos htmls
 
-#certo
 class UsuarioCadastroForm(forms.ModelForm):
 	class Meta:
 		model = Usuario
@@ -16,8 +14,6 @@ class UsuarioCadastroForm(forms.ModelForm):
 			'cpfCnpj': forms.TextInput(attrs={'class': 'form-control','placeholder':'CPF ou CNPJ', 'name':'cpfCnpj', 'id':'cpfCnpj', 'maxlength':255}),
 		}
 
-
-#certo
 class UserCadastroForm(forms.ModelForm):
 	class Meta:
 		
@@ -31,16 +27,6 @@ class UserCadastroForm(forms.ModelForm):
 			
 		}
 		
-	#salva no BD
-
-	def save(self, commit=True):
-		user = super(UsuarioCadastroForm, self).save(commit=False)
-		user.set_password()
-		if commit:
-			user.save()
-
-		return user
-#certo
 class UsuarioLoginForm(forms.ModelForm):
 	class Meta:
 		model = User
@@ -50,7 +36,6 @@ class UsuarioLoginForm(forms.ModelForm):
 			'password': forms.PasswordInput(attrs={'class': 'form-control','placeholder':'Senha', 'name':'password', 'id':'password', 'maxlength':255}),
 		}
 
-#certo
 class CadastroServicoForm(forms.ModelForm):
 	class Meta:
 		model = Servico
@@ -63,16 +48,6 @@ class CadastroServicoForm(forms.ModelForm):
 			'categoria': forms.Select(attrs={'id':'id-categoria','class':'selectField'})
 		}
 
-	def saveServico(self, commit=True):
-		servico = super(CadastroServicoForm, self).save(commit=False)
-		servico.set_password()
-		if commit:
-			servico.save()
-
-		return servico
-#certo
-
-#certo
 class ContatoForm(forms.ModelForm):
     class Meta:
         model = Contato
@@ -82,7 +57,6 @@ class ContatoForm(forms.ModelForm):
             'descricaoContato': forms.TextInput(attrs={'placeholder':'Descrição', 'name':'descricaoContato', 'id':'descricaoContato','maxlength':255}),
             }
 
-#certo
 class EnderecoForm(forms.ModelForm):
 	class Meta:
 		model = Endereco
@@ -92,9 +66,6 @@ class EnderecoForm(forms.ModelForm):
 		'numero': forms.TextInput(attrs={'placeholder':'Número', 'name':'numero', 'id':'numero'}),
 		'cidade': forms.Select(attrs={'id':'id-cidade','class':'selectField'}),
 		}
-
-#certo
-
 
 class RuaForm(forms.ModelForm):
 	class Meta:
@@ -114,22 +85,14 @@ class BairroForm(forms.ModelForm):
 		'bairro': forms.TextInput(attrs={'placeholder':'Bairro', 'name':'bairro', 'id':'bairro','maxlength':255}),
 		}
 
+class PesquisaForm(forms.Form):
+    servico = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Que serviço precisa?', 'name':'servico', 'id':'servico','maxlength':255}))
+
+class SenhaForm(forms.Form):
+	senha = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-pesquisa', 'name':'senha', 'id':'senha','maxlength':255}))
+
 class ImagemForm(forms.ModelForm):
 
 	class Meta:
 		model = Imagens
 		fields = ['descricaoImagem']
-
-
-class PesquisaForm(forms.Form):
-    servico = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-pesquisa', 'placeholder':'Que serviço precisa?', 'name':'pesquisaServico', 'id':'pesquisaServico','maxlength':255}))
-
-class ComentarioServicoForm(forms.ModelForm):
-
-	class Meta:
-		model = Comentario
-		fields = '__all__'
-#END
-
-class SenhaForm(forms.Form):
-	senha = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-pesquisa', 'name':'senha', 'id':'senha','maxlength':255}))

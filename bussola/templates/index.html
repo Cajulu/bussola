@@ -72,17 +72,18 @@
                 </div>
             </div>
             <div class="row">
-                <form method="POST">
-                {% csrf_token %}
-                    <div class="col-lg-10" style="margin-top: 10%;">
-                        {{formPesquisa}}
-                    </div>
-                    <div class="col-lg-2" style="margin-top: 12%;">
-                        <form>
-                          <button class="btn btn-success btn-lg" type="submit">Pesquisar</button>
-                        </form>
-                    </div>
-                </form>    
+                 <form method="POST">
+                    {% csrf_token %}
+                        <div class="col-lg-10" style="margin-top: 10%;">
+                            {{formPesquisa}}
+                        </div>
+                        <div class="col-lg-2" style="margin-top: 12%;">
+                            
+                              <button class="btn btn-success btn-lg" type="submit" onclick="Mudarestado('minhaDiv')">Pesquisar</button>
+                            
+                        </div>
+                </form> 
+            
             </div>
         </div>
     </header>
