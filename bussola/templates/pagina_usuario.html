@@ -73,11 +73,17 @@
                 </div>
             </div>
             <div class="row">
-                <form action="" method="POST">
-                {% csrf_token %}
-                    <form>
-                        <button class="btn btn-success btn-lg" type="submit">Pesquisar</button>
-                    </form>
+                <form method="POST">
+                    {% csrf_token %}
+                        <div class="col-lg-10" style="margin-top: 10%;">
+                            {{formPesquisa}}
+                            {{formPesquisa.errors}}
+                        </div>
+                        <div class="col-lg-2" style="margin-top: 12%;">
+                            
+                              <button class="btn btn-success btn-lg" type="submit">Pesquisar</button>
+                            
+                        </div>
                 </form>    
             </div>
         </div>
@@ -101,7 +107,7 @@
                                {{categoria.categoria}}
                             </div>
                         </div>
-                        <img src="{% static 'img/categoria.png' %}" class="img-responsive" alt={{categoria.categoria}}>
+                        <img src={{categoria.imagemCategoria.url}} height="300" width="350">
                     </a>
                 </div>
             {% endfor %}

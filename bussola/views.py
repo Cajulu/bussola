@@ -18,21 +18,17 @@ def index(request):
             servico = formPesquisa.cleaned_data['servico']
             servicoPesquisado = Servico.objects.filter(nomeServico=servico)
             return render(request, 'lista_pesquisa_servico.html', {'servicos':servicoPesquisado})
-            #return HttpResponse("Erro")
     
     else:
         formPesquisa = PesquisaForm()
     
-
     categorias = Categoria.objects.all()
     return render(request, 'index.html', {'categorias':categorias, 'formPesquisa':formPesquisa})
       
-
 def listaPesquisaServico(request):
     
     return render(request, 'lista_pesquisa_servico.html')
-      
- 
+     
 @login_required
 def perfil(request):
     user = request.user
@@ -114,7 +110,7 @@ def cadastroServico(request):
             bairro.save()
             
             nomeRua = formRua.cleaned_data['rua']
-            rua = Rua.objects.create(rua=nomeRua, endereco=endereco)
+            rua = Rua.objects.create(rua=nomeRua, bairro=bairro)
             rua.save()
 
             tipo = formContato.cleaned_data['tipo']
@@ -138,44 +134,19 @@ def cadastroServico(request):
 
 @login_required
 def paginaUsuario(request):
-    
     if request.method == 'POST':
         formPesquisa = PesquisaForm(request.POST)
         
         if formPesquisa.is_valid():
             servico = formPesquisa.cleaned_data['servico']
-            servicos = Servico.objects.filter(nomeServico=servico)
-        return redirect('/lista_pesquisa_servico/')
+            servicoPesquisado = Servico.objects.filter(nomeServico=servico)
+            return render(request, 'lista_pesquisa_servico.html', {'servicos':servicoPesquisado})
     
     else:
         formPesquisa = PesquisaForm()
-
+    
     categorias = Categoria.objects.all()
-    return render(request, 'pagina_usuario.html', {'categorias':categorias})
-
-
-def novaSenha(request):
-
-    formUsu = UserCadastroForm(request.POST) 
-    formSenha = SenhaForm(request.POST)
-
-    if request.method == 'POST':
-        print(request)
-        if formUsu.is_valid() and formSenha.is_valid():
-            nome = formUsu.cleaned_data['username']
-            senha = formSenha.cleaned_data['senha']
-            novaSenha = formUsu.cleaned_data['password']
-            filtro = User.objects.get(username=nome, password=senha)
-            filtro.password = novaSenha
-            filtro.save()
-        
-            return redirect('/login/')
-
-        else:
-            formUsu = UserCadastroForm()
-            formSenha = SenhaForm()
-
-    return render(request, 'recuperacao_senha.html', {'formUsu':formUsu, 'formSenha': formSenha})
+    return render(request, 'pagina_usuario.html', {'categorias':categorias, 'formPesquisa':formPesquisa})
 
 @login_required
 def listaMeuServico(request):
@@ -188,8 +159,8 @@ def listaMeuServico(request):
 def meuServico(request, pk):
     servico = get_object_or_404(Servico, pk=pk)
     endereco = Endereco.objects.get(servico=servico)
-    rua = Rua.objects.get(endereco=endereco)
     bairro = Bairro.objects.get(endereco=endereco)
+    rua = Rua.objects.get(bairro=bairro)
     contato = Contato.objects.get(servico = servico)
     imagem = Imagens.objects.get(servico=servico)
     return render(request, 'meu_servico.html', {'servico': servico, 'endereco':endereco, 'contato':contato, 'imagem':imagem, 'bairro':bairro, 'rua':rua})
@@ -198,8 +169,8 @@ def meuServico(request, pk):
 def alterarServico(request, pk):
     servico = get_object_or_404(Servico, pk=pk)
     endereco = Endereco.objects.get(servico=servico)
-    rua = Rua.objects.get(endereco=endereco)
     bairro = Bairro.objects.get(endereco=endereco)
+    rua = Rua.objects.get(bairro=bairro)
     contato = Contato.objects.get(servico=servico)
     imagem = Imagens.objects.get(servico=servico)
     user = request.user
@@ -243,8 +214,8 @@ def categoria(request, pk):
 def servico(request, pk):
     servico = Servico.objects.get(pk=pk)
     endereco = Endereco.objects.get(servico=servico)
-    rua = Rua.objects.get(endereco=endereco)
     bairro = Bairro.objects.get(endereco=endereco)
+    rua = Rua.objects.get(bairro=bairro)
     contato = Contato.objects.get(servico = servico)
     imagem = Imagens.objects.get(servico=servico)
     return render(request, 'servico.html', {'servico': servico, 'endereco':endereco, 'contato':contato, 'imagem':imagem, 'bairro':bairro, 'rua':rua})

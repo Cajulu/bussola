@@ -10,6 +10,7 @@ class Usuario(models.Model):
 		
 class Categoria(models.Model):
 	categoria = models.CharField(max_length=200)
+	imagemCategoria = models.ImageField(upload_to='categorias', null=True)
 
 	def __str__(self):
 		return self.categoria
@@ -30,7 +31,6 @@ class Servico(models.Model):
 	def __str__(self):
 		return self.nomeServico
 
-
 class Endereco(models.Model):
 	numero = models.IntegerField()	
 	cidade = models.ForeignKey(Cidade, null=True, blank=False, verbose_name='Cidade')
@@ -39,20 +39,19 @@ class Endereco(models.Model):
 	def __str__(self):
 		return self.cidade.cidade
 
-class Rua(models.Model):
-	rua = models.CharField(max_length=200)
-	endereco = models.ForeignKey(Endereco, null=True, blank=False, verbose_name='Endereco')
-	
-	def __str__(self):
-		return self.rua
-
 class Bairro(models.Model):
 	bairro = models.CharField(max_length=200)
 	endereco = models.ForeignKey(Endereco, null=True, blank=False, verbose_name='Endereco')
-
+	
 	def __str__(self):
 		return self.bairro
 
+class Rua(models.Model):
+	rua = models.CharField(max_length=200)
+	bairro = models.ForeignKey(Bairro, null=True, blank=False, verbose_name='Bairro')
+	
+	def __str__(self):
+		return self.rua
 
 class Imagens(models.Model):
 	descricaoImagem = models.ImageField(upload_to='fotos', null=True)
@@ -74,4 +73,4 @@ class Contato(models.Model):
 
 	def __str__(self):
 		return self.descricaoContato
-
+		
